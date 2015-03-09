@@ -1,0 +1,125 @@
+<?php
+$title = 'Neuen Athleten anlegen';
+$this->headTitle($title);
+?>
+<h1><u>Neuen Athleten anlegen</u></h1>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<form action="add">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">ID:</td>
+      <td><input name="id" type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Name:</td>
+      <td><input name="name" type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Vorname:</td>
+      <td><input name="vorname" type="text" size="30" maxlength="30"></td>
+      
+    </tr>
+    <tr>
+      <td align="right">Titel:</td>
+      <td><input name="titel" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Zusatz:</td>
+      <td><input name="zusatz" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Geburtstag:</td>
+      <td><input name="geburtstag" type="date" size="30" maxlength="30"></td>
+    </tr>
+     <tr>
+      <td align="right">Geschlecht:</td>
+      <td><input name="geschlecht" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Telefonnummer1:</td>
+      <td><input name="telefonnummer1" type="text" size="30" maxlength="30"></td>
+    
+      <td align="right">Telefonnummer2:</td>
+      <td><input name="telefonnummer2" type="text" size="30" maxlength="30"></td>
+    
+      <td align="right">Telefonnummer3:</td>
+      <td><input name="telefonnummer3" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Fax:</td>
+      <td><input name="fax" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Email:</td>
+      <td><input name="email" type="text" size="30" maxlength="30"></td>
+       <td align="right">Passwort:</td>
+      <td><input name="passwort" type="text" size="30" maxlength="30"></td>
+      <td><?php echo "*Hinweis: Passwort muss zwischen 8 und 16 Zeichen haben!";?></td>
+    </tr>
+   
+    <tr>
+      <td align="right">Firma:</td>
+      <td><input name="firma" type="text" size="30" maxlength="30"></td>
+    </tr>
+
+    <tr>
+      <td align="right">IBAN:</td>
+      <td><input name="iban" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">BIC:</td>
+      <td><input name="bic" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Historie:</td>
+      <td><input name="historie" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Umkreis:</td>
+      <td><input name="umkreis" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Werbung:</td>
+      <td><input name="werbung" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Status:</td>
+      <td><input name="status" type="text" size="30" maxlength="30"></td>
+    </tr>
+  
+
+    </tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value="Anlegen" name="absenden">
+     
+    </tr>
+  </table>
+</form>
+
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('athleteinsicht', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>

@@ -1,0 +1,83 @@
+<?php
+$title = 'Werbeauftrag suchen';
+$this->headTitle($title);
+?>
+<h1><u>Betreiber suchen</u></h1>
+
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('betreiber', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+
+
+<form action="search">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">Email:</td>
+      <td><input name="email" type="text" size="30" maxlength="30"></td>
+    </tr>
+   
+    <tr>
+      <td align="right">Nachname:</td>
+      <td><input name="nachname" type="text" size="30" maxlength="30"></td>
+    </tr>
+      <td align="right">Formular:</td>
+      <td>
+        <input type="submit" value="Suchen" name="absenden" class="button">
+     
+    </tr>
+  </table>
+</form>
+
+<table class="table">
+	   <tr>
+		<th>Email</th>
+		<th>Vorname</th>
+		<th>Nachname</th>
+		
+		<th>Editieren</th>
+		<th>L&oumlschen</th>
+		<th></th>
+	   </tr>
+	   
+	   
+ <?php 
+ if($betreiberliste!=NULL){
+     
+
+ foreach ($betreiberliste as $betreiber): ?>
+    <tr>
+             <td>
+             <?php echo $this->escapeHtml($betreiber->getEmail()); ?></a></td>
+            
+              <td><?php echo $this->escapeHtml($betreiber->getVorname()); ?></td>
+            <td><?php echo $this->escapeHtml($betreiber->getName()); ?></td>
+             
+                         
+              
+             <td><a href="<?php  
+                 echo $this->url('betreiber', array(
+                     'action' => 'edit',
+                        'email' => $betreiber->getEmail()
+                   ));
+                 ?>">
+             <img src="C:/xampp/htdocs/SeminarStarmina/public/img/edit.png" width="30" height="30" alt="delete"></a></td> 
+			
+             <td><a href="<?php  
+                 echo $this->url('betreiber', array(
+                     'action' => 'delete',
+                        'email' => $betreiber->getEmail()
+                   ));
+                 ?>">
+             <img src=C:/xampp/htdocs/SeminarStarmina/public/img/delete.png width="30" height="30" alt="delete"></a></td>  
+			
+ <?php endforeach; 
+ 
+ }?>
+ </table>

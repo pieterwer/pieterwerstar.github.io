@@ -1,0 +1,72 @@
+<?php
+$title = 'Suche: Veranstalterbezahlung';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('veranstalterbezahlung', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+<form action="search">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">VeranstalterID:</td>
+      <td><input name="id" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Verwendungszweck:</td>
+      <td><input name="useid" type="text" size="30" maxlength="30"></td>
+    </tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden" class="button">
+    </tr>
+  </table>
+</form>
+
+<table class="table" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr>
+		<th>ID</th>
+		<th>Veranstalter ID</th>
+		<th>Iban</th>
+		<th>Bic</th>
+		<th>Wert</th>
+		<th>Datum</th>
+		<th>Verwendungszweck</th>
+		<th>Verwendungsart</th>
+		
+	</tr>
+ <?php
+ if($veranstalterbezahlungen!=NULL){
+     
+ foreach ($veranstalterbezahlungen as $veranstalterbezahlung): ?>
+ <tr>
+		<td> <?php echo $this->escapeHtml($veranstalterbezahlung->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($veranstalterbezahlung->getVeranstalterid()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getIban()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getBic()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getWert()); ?>&#8364;</td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getDatum()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getVerwendungszweck()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getVerwendungsart()); ?></td>
+      
+             
+             
+             
+
+    
+    
+  
+  
+    
+			
+ <?php endforeach;
+ } ?>
+ </table>
+ 
+ 

@@ -1,0 +1,25 @@
+ <?php
+ // module/Gutscheincode/view/Gutscheincode/Gutscheincode/delete.phtml:
+
+ $title = 'Gutscheincode Entfernen';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <p>Folgenden Gutscheincode entfernen: 
+     <?php echo $this->escapeHtml($gutscheincode->id); ?> Wert:
+     <?php echo $this->escapeHtml($gutscheincode->wert); ?> Euro?
+ </p>
+ <?php
+ $url = $this->url('gutscheincode', array(
+     'action' => 'delete',
+     'id'     => $this->id,
+ ));
+ ?>
+ <form action="<?php echo $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="id" value="<?php echo (int) $gutscheincode->id; ?>" />
+     <input type="submit" name="del" value="Ja" />
+     <input type="submit" name="del" value="No" />
+ </div>
+ </form>

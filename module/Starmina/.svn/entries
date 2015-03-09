@@ -1,0 +1,63 @@
+10
+
+dir
+0
+https://starminagroup7.googlecode.com:443/svn/trunk/module/Starmina
+https://starminagroup7.googlecode.com:443/svn
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+
+
+
+
+
+
+
+
+
+
+
+3a7f079c-4cf6-2742-e88a-e9d31ad74fd6
+
+autoload_classmap.php
+file
+
+
+
+add
+
+config
+dir
+
+
+
+add
+
+src
+dir
+
+
+
+add
+
+view
+dir
+
+
+
+add
+
+Module.php
+file
+
+
+
+add
+

@@ -1,0 +1,96 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'My event list';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<pre><?php print_r($zu)?></pre>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'add'
+));
+?>">Add new item</a>
+
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'aktuell'
+));
+?>">Anmelden zu Events</a>
+
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'multiplikator'
+));
+?>">Cashback-Aktion beantragen</a>
+</p>
+
+
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Ort</th>
+		<th>PLZ</th>
+		<th>Strasse</th>
+		<th>Hausnummer</th>
+		<th>Datum</th>
+		<th>Meisterschaft</th>
+		<th>Geschlecht</th>
+		<th>Gebuehr</th>
+		<th>&nbsp;</th>
+	</tr>
+ <?php foreach ($events as $event): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('event', array(
+        'action' => 'edit',
+        'id' => $event->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($event->getName()); ?></a></td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getPostleitzahl()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getStrasse()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getHausnummer()); ?></td>
+		<td><?php echo $this->escapeHtml(DateTime::createFromFormat('Y-m-d H:i:s', $event->getDatum())->format('Y-m-d H:i')); ?></td>
+		<td><?php echo $event->getMeisterschaftsbeschraenkung() ? $event->getMeisterschaftsbeschraenkung() : 'No'; ?></td>
+		<td><?php echo $event->getGeschlechtsbeschraenkung() != NULL ? $event->getGeschlechtsbeschraenkung() : 'No'; ?></td>
+		<td><?php echo $this->escapeHtml($event->getAnmeldegebuehr()); ?> &#8364;</td>
+		<td><a href="<?php  
+                 echo $this->url('event', array(
+                     'action' => 'hist',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             History</a></td>	
+          <td><a href="<?php  
+                 echo $this->url('event', array(
+                     'action' => 'delete',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             Loeschen</a></td>   
+                 <td><a href="<?php  
+                 echo $this->url('ergebnis', array(
+                     'action' => 'ergebnis',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             Ergebnisse</a></td>    
+                 <td><a href="<?php  
+                 echo $this->url('bewertung', array(
+                     'action' => 'durchschnitt',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             Bewertungen</a></td>      
+ <?php endforeach; ?>
+ </table>

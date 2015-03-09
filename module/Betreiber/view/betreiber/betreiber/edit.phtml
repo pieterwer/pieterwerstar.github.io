@@ -1,0 +1,76 @@
+<?php
+$title = 'Betreiber bearbeiten';
+$this->headTitle($title);
+?>
+<h1><u>Betreiber bearbeiten</u></h1>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('betreiber', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+
+
+<form action="edit">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">Email:</td>
+      <td><input name="email" value=<?php echo $email; ?> type="text" size="30" maxlength="30" readonly></td>
+    </tr>
+    
+    <tr>
+      <td align="right">ID:</td>
+      <td><input name="ID" type="text" value=<?php echo $id; ?> size="30" maxlength="30" readonly></td>
+    </tr>
+    <tr>
+      <td align="right">Nachname:</td>
+      <td><input name="name" value=<?php echo $name; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Vorname:</td>
+      <td><input name="vorname" value=<?php echo $vorname; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Passwort:</td>
+      <td><input name="passwort" value=<?php echo $passwort; ?> type="text"  size="30" maxlength="30"></td>
+       <td>*Passwort muss 8 bis 16 Zeichen lang sein</td>
+    </tr>
+    <tr>
+    <td align="right">Rolle:</td>
+      
+    <td>
+    <select name="rolle" size="2">
+      <option selected >MA</option>
+      <option>AD</option>
+     
+    </select>
+    </td>
+
+
+    </tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden" class="button">
+      
+    </tr>
+  </table>
+</form>

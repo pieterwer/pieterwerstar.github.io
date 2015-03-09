@@ -1,0 +1,20 @@
+<?php
+$title = 'Label-Event-Zuordnung entfernen';
+$this->headTitle($title);
+?>
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<hr width=“15“ size=“1“ noshade=“noshade“ align=“left“ />
+<p>Sind Sie sicher, dass Sie die Label-Event-Zuordnung mit der Event-ID: <?php echo $labeleventzuordnung->getEventId();?>und der Label-ID: <?php echo $labeleventzuordnung->getLabelId();?> l&oumlschen wollen?</p>
+
+<?php
+$url = $this->url('labeleventzuordnung', array(
+    'action' => 'delete',
+    'eventid' => $this->eventid,));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+	    <input type="hidden" name="eventid" value="<?php echo (int) $labeleventzuordnung->eventid; ?>" />
+		<input type="submit" name="del" value="Ja" />
+		<input type="submit" name="del" value="Abbrechen" />
+	</div>
+</form>

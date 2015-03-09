@@ -1,0 +1,59 @@
+<?php
+$title = 'Ergebnisse zum ausgewaehlten Event';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php 
+$form = $this->form;
+$form->setAttribute('action', $this->url('ergebnis', array(
+    'action' => 'ergebnis', 'id' => $event->getId()
+)));
+$form->get('submit')->setAttribute('value', 'Ergebnis');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+echo $this->formRow($form->get('srt'));
+echo $this->formHidden($form->get('eventid'));
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+
+<table class="table">
+	<tr>
+		<th>Eventname</th>
+		<th>Athletname</th>
+		<th>Zeit</th>
+		<th>Gesamtplatzierung</th>
+		<th>Alter</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <tr>
+ <?php foreach ($ergebnisse as $ergebnis):
+$x = $athlet->getAthlet($ergebnis->getAthletid());
+?>
+<tr>
+                <td>
+             <?php echo $this->escapeHtml($event->getName()); ?></a></td>
+            <td><?php echo $this->escapeHtml($x->Name); ?></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getZeit()); ?></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getGesamtplatzierung()); ?></td>
+                <td><?php echo $this->escapeHtml($ergebnis->getAlter()); ?></td>
+                
+<?php endforeach; ?>
+ </table>
+ <p>
+	<a
+		href="<?php
+
+echo $this->url('ergebnis', array(
+    'action' => 'export' , 'id' => $event->getId()
+));
+?>">Liste exportieren</a>
+</p>

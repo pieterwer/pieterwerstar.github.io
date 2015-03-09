@@ -1,0 +1,33 @@
+ <?php
+ // module/Gutscheincode/view/Gutscheincode/Gutscheincode/index.phtml:
+ //TODO AUSGABE FUNKTIONIERT NOCH NICHT
+
+ $title = 'Gutscheincode';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+ <table class="table">
+ <tr>
+     <th>Gutscheicode</th>
+     <th>Wert</th>
+     <th>Status</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($gutscheincodes as $gutscheincode) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($gutscheincode->id);?></td>
+     <td><?php echo $this->escapeHtml($gutscheincode->wert);?></td>
+     <td><?php echo $this->escapeHtml($gutscheincode->status);?></td>
+     <td>
+         <a href="<?php echo $this->url('gutscheincode',
+             array('action'=>'delete', 'id' => $gutscheincode->id));?>">L&oumlschen</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
+
+   <p>
+     <a href="<?php echo $this->url('gutscheincode', array('action'=>'index'));?>">Gutscheincodes Startseite</a>
+ </p>

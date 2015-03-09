@@ -1,0 +1,21 @@
+<?php
+$title = 'Cashback-Aktion ablehnen';
+$this->headTitle($title);
+?>
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<hr width=“15“ size=“1“ noshade=“noshade“ align=“left“ />
+<p>Sind Sie sicher, dass Sie den Multiplikator mit der ID: <?php echo $cashbackmultiplikator->getId();?> l&oumlschen wollen? </p>
+<p><b>Damit lehnen Sie den Cashback-Antrag f&uumlr das Event mit der ID <?php echo $cashbackmultiplikator->getEventId()?> ab.</b></p>
+<br>
+<?php
+$url = $this->url('cashbackmultiplikator', array(
+    'action' => 'delete',
+    'id' => $this->id,));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+	    <input type="hidden" name="eventid" value="<?php echo (int) $cashbackmultiplikator->id; ?>" />
+		<input type="submit" name="del" value="Ja" />
+		<input type="submit" name="del" value="Abbrechen" />
+	</div>
+</form>

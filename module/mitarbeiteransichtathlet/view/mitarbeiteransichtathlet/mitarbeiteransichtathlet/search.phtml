@@ -1,0 +1,91 @@
+<?php
+$title = 'Athlet suchen';
+$this->headTitle($title);
+?>
+<h1><u>Athlet suchen</u></h1>
+
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('mitarbeiteransichtathlet', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+<form action="search">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">Email:</td>
+      <td><input name="email" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Name:</td>
+      <td><input name="name" type="text" size="30" maxlength="30"></td>
+    </tr>
+      <td align="right">Formular:</td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden" class="button">
+     
+    </tr>
+  </table>
+</form>
+
+<table class="table"  cellpadding="5" cellspacing="0" bgcolor="#E0E0E0" >
+	<tr >
+	    <th>ID</th>
+		<th>Name</th>
+		<th>Vorname</th>
+		<th>Titel</th>
+		<th>Zusatz</th>
+		<th>Geburtstag</th>
+		<th>Geschlecht</th>
+		<th>Telefonnummer1</th>
+		<th>Telefonnummer2</th>
+		<th>Telefonnummer3</th>
+		<th>Fax</th>
+		<th>Email</th>
+		<th>Firma</th>
+		<th>IBAN</th>
+		<th>BIC</th>
+		<th>Historie</th>
+		<th>Umkreis</th>
+		<th>Werbung</th>
+		<th>Status</th>
+		
+		
+	</tr>
+ <?php
+if($Mitarbeiteransichtathlet!=NULL){
+    
+
+ 
+ 
+ foreach ($Mitarbeiteransichtathlet as $Mitarbeiteransichtathlet1): ?>
+ <tr>
+	        <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getName()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getVorname()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getTitel()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getZusatz()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getGeburtstag()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getGeschlecht()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getTelefonnummer1()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getTelefonnummer2()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getTelefonnummer3()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getFax()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getEmail()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getFirma()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getIban()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getBic()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getHistorie()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getUmkreis()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getWerbung()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtathlet1->getStatus()); ?></td>
+    		
+         
+			
+ <?php endforeach; }?>
+ 
+ </table>

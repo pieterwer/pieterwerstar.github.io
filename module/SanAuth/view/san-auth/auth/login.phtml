@@ -1,0 +1,41 @@
+
+<?php
+
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'login/process',
+    array(
+        'action'     => 'authenticate',
+    )
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div style="height: 500px; width: 100%; overflow: hidden">
+	<img src="img/running.jpg" width="100%" class="running">
+</div>
+
+
+<div class="loginbuttons">
+<?php 
+echo $this->formCollection($form);
+?>
+</div>
+
+
+
+<?php 
+echo $this->form()->closeTag();
+
+if ($this->messages){
+    echo '<ul>';
+    foreach($this->messages as $message)
+    {
+        echo '<li>'.$message.'</li>';
+    }
+    echo '</ul>';
+    
+}
+
+

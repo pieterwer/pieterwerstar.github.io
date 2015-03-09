@@ -1,0 +1,32 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'My Vorlagen list';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<table class="table">
+	<tr>
+		<th>Name:</th>
+	</tr>
+ <?php foreach ($veranstaltungen as $veranstaltung): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('veranstaltung', array(
+        'action' => 'show',
+        'id' => $veranstaltung->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($veranstaltung->getName()); ?></a></td>
+	<td><a href="<?php  
+                 echo $this->url('veranstaltung', array(
+                     'action' => 'rewrite',
+                        'id' => $veranstaltung->getId()
+                   ));
+                 ?>">
+             uebernehmen?</a></td>		
+ <?php endforeach; ?>
+ </table>

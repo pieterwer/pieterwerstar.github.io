@@ -1,0 +1,42 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'alle Vereinsbuchungen gruppiert nach Verwendungszweck';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<table class="table">
+	<tr  bgcolor=#F7FAAC>
+		<th>Verwendungszweck</th>
+		<th>Anzahl der Vereine</th>
+		<th>Wert</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($vereinbezahlungen as $vereinbezahlung): ?>
+ <tr>
+            <td> <?php echo $this->escapeHtml($vereinbezahlung->getVerwendungszweck()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getAnzahlvereine()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getWertsum()); ?>&#8364;</td>
+    		<td><a
+    		
+    		
+    		
+    		
+			href="<?php
+        echo $this->url('vereinbezahlung', array(
+        'action' => 'forwardgroup',
+        'wert'=> $vereinbezahlung->getWertsum(),
+        'useid' => $vereinbezahlung->getVerwendungszweck()
+    ));
+        
+        
+        
+    ?>">Weiter&uumlberweisen</a></td>
+
+    
+
+    					
+ <?php endforeach; ?>
+ </table>

@@ -1,0 +1,93 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Alle Vereinsbuchungen';
+$this->headTitle($title);
+?>
+<h1><u>Liste aller Vereinsbuchungen</u></h1>
+
+<form action=vereinbezahlung/search>
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    
+    <tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value="Nach Zahlungen suchen" style="width: 340px; height: 30px">
+        
+      </td>
+    </tr>
+  </table>
+</form>
+
+<form action=vereinbezahlung/group>
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    
+    <tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value="Zahlungen nach Verwendungszweck gruppieren" style="width: 340px; height: 30px">
+        
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+<table class="table" border="2" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr bgcolor=#F7FAAC>
+		<th>ZahungsID</th>
+		<th>Vereins ID</th>
+		<th>Iban</th>
+		<th>Bic</th>
+		<th>Wert</th>
+		<th>Datum</th>
+		<th>Verwendungszweck</th>
+		<th>Verwendungsart</th>
+		<th>Weiter&uumlberweisen</th>
+		<th>Zur&uumlck&uumlberweisen</th>
+	</tr>
+	
+ <?php foreach ($vereinbezahlungen as $vereinbezahlung): ?>
+ <tr>
+		    <td><?php echo $this->escapeHtml($vereinbezahlung->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($vereinbezahlung->getVereinid()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getIban()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getBic()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getWert()); ?>&#8364;</td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getDatum()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getVerwendungszweck()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getVerwendungsart()); ?></td>
+      
+             
+             
+             <td><a
+			href="<?php
+    
+        echo $this->url('vereinbezahlung', array(
+        'action' => 'forward',
+        'id' => $vereinbezahlung->getId(),
+        'vereinid' => $vereinbezahlung->getVereinid(),
+        'wert'=> $vereinbezahlung->getWert(),
+        'useid' => $vereinbezahlung->getVerwendungszweck()
+        
+        
+    ));
+    ?>"><img src="http://cdns2.freepik.com/fotos-kostenlos/pfeil-rechts-grun-clip-art_427400.jpg" width="70" height="40" ></a></td>
+
+    
+    
+  
+  
+    <td><a
+			href="<?php
+    
+echo $this->url('vereinbezahlung', array(
+        'action' => 'back',
+        'id' => $vereinbezahlung->getId(),
+        'vereinid' => $vereinbezahlung->getVereinid(),
+        'wert'=> $vereinbezahlung->getWert(),
+       
+    ));
+    ?>"><img src="http://www.care4media.ch/Portals/627/images/reseller/pfeillinks.jpg" width="70" height="40" ></a></td>
+			
+ <?php endforeach; ?>
+ </table>

@@ -1,0 +1,38 @@
+<?php
+ // module/verein/view/verein/verein/index.phtml:
+
+ $title = 'Gemeldete Vereine';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <table class="table">
+ <tr>
+     <th>ID</th>
+     <th>Name</th>
+     <th>Admin Email</th>
+     <th>Strasse</th>
+     <th>Hausnummer</th>
+     <th>PLZ</th>
+     <th>Ort</th>
+     <th>IBAN</th>
+     <th>BIC</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($vereine as $verein) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($verein->id);?></td>
+     <td><?php echo $this->escapeHtml($verein->name);?></td>
+     <td><?php echo $this->escapeHtml($verein->adminemail);?></td>
+     <td><?php echo $this->escapeHtml($verein->strasse);?></td>
+     <td><?php echo $this->escapeHtml($verein->hausnummer);?></td>
+     <td><?php echo $this->escapeHtml($verein->plz);?></td>
+     <td><?php echo $this->escapeHtml($verein->ort);?></td>
+     <td><?php echo $this->escapeHtml($verein->iban);?></td>
+     <td><?php echo $this->escapeHtml($verein->bic);?></td>
+
+ </tr>
+ <?php endforeach; ?>
+ </table>
+ 
+ 

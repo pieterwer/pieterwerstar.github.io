@@ -1,0 +1,56 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'My admin list';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('admin', array(
+    'action' => 'add'
+));
+?>">Add new item</a>
+</p>
+
+
+<table class="table">
+	<tr>
+		<th>Email</th>
+		<th>Vorname</th>
+		<th>Nachname</th>
+		<th></th>
+	</tr>
+
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('admin', array(
+        'action' => 'edit',
+        'id' => $admin->getd()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($admin->getEmail()); ?></a></td>
+            <td><?php echo $this->escapeHtml($admin->getVorname()); ?></td>
+    		<td><?php echo $this->escapeHtml($admin->getNachname()); ?></td>
+            <td><a href="<?php  
+                 echo $this->url('admin', array(
+                     'action' => 'delete',
+                        'id' => $admin->getId()
+                   ));
+                 ?>">
+             <img src="img/delete.png" width="30" height="30" alt="delete"></a></a></td>     
+            
+			<td><a href="<?php  
+                 echo $this->url('admin', array(
+                     'action' => 'show',
+                        'id' => $admin->getId()
+                   ));
+                 ?>">
+             Admin</a></td>
+             
+			
+
+ </table>

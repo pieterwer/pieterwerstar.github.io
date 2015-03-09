@@ -1,0 +1,53 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Ergebnisse zum ausgewaehlten Event';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<select name="srt" size="1")">
+      <option value=1>Zwischen 20 und 40</option>
+      <option value=2>test</option>
+    </select>
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('ergebnis', array(
+    'action' => 'ergebnis', 'id' => $event->getId(), 'srt' => '1'
+));
+?>">Sortieren</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>Event-ID</th>
+		<th>Athlet-ID</th>
+		<th>Zeit</th>
+		<th>Gesamtplatzierung</th>
+		<th>Altersklassenplatzierung</th>
+		<th>Alter</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <tr>
+ <?php foreach ($ergebnisse as $ergebnis): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('ergebnis', array(
+        'action' => 'edit',
+        'id' => $ergebnis->getEventId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($ergebnis->getEventId()); ?></a></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getAthletid()); ?></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getZeit()); ?></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getGesamtplatzierung()); ?></td>
+    		<td><?php echo $this->escapeHtml($ergebnis->getAltersklassenplatzierung()); ?></td>
+    		<td><?php echo $this->escapeHtml($ergebnis->getAlter()); ?></td>
+    		
+ <?php endforeach; ?>
+ </table>

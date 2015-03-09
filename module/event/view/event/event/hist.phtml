@@ -1,0 +1,61 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'VorgŠngerevents zum ausgewŠhlten Event';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'hist' , 'id' => $event->getId()
+));
+?>">Add new item</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Vorgänger</th>
+		<th>Ort</th>
+		<th></th>
+		<th>&nbsp;</th>
+	</tr>
+ <tr>
+ <?php foreach ($events as $event): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('event', array(
+        'action' => 'hist',
+        'id' => $event->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($event->getId()); ?></a></td>
+		<td><?php echo $this->escapeHtml($event->getName()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getVorgaengerid()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+		<td><p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'add' , 'id' => $event->getId()
+));
+?>">Add new item</a>
+</p></td>
+		
+			
+<pre><?php print_r($event)?></pre>
+ <?php endforeach; ?>
+ </table>
+ 
+ <a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'hist'
+));
+?>">Zur Uebersicht</a>

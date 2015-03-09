@@ -1,0 +1,61 @@
+<?php
+$title = 'Vereinsadmin suchen';
+$this->headTitle($title);
+?>
+<h1><u>Vereinsadmin suchen</u></h1>
+
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('vereinsadminaendern', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+<form action="search">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">VereinID:</td>
+      <td><input name="vereinid" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value="Verein suchen" style="width: 290px; height: 30px" class="button">
+        
+      </td>
+    </tr>
+  </table>
+</form>
+
+<table class="table"  cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr>
+	
+		<th>Adminemail</th>
+		<th>VereinsID</th>
+		<th>Admin &auml;ndern</th>
+		
+		
+	</tr>
+ <?php
+  if($vereinsadminaendern1!=NULL){
+      
+
+ foreach ($vereinsadminaendern1 as $vereinsadminaendern): ?>
+ <tr>
+		
+            <td><?php echo $this->escapeHtml($vereinsadminaendern->getAdminemail()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinsadminaendern->getId()); ?></td>
+    		<td><a href="<?php  
+                 echo $this->url('vereinsadminaendern', array(
+                     'action' => 'update',
+                        'id' => $vereinsadminaendern->getId()
+                   ));
+                 ?>">
+             <img src="C:/xampp/htdocs/SeminarStarmina/public/img/edit.png" width="30" height="30" ></a></td>
+			
+ <?php endforeach;
+  } ?>
+ </table>

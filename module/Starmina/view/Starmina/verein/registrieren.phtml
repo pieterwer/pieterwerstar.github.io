@@ -1,0 +1,122 @@
+<?php
+$title = 'Vereinskonto anlegen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <?php
+ $form->setAttribute('action', $this->url('verein', array('action' => 'registrieren')));
+ $form->prepare();
+ echo $this->form()->openTag($form);
+ ?>
+ 
+
+ <?php
+ echo $this->formHidden($form->get('id'));
+ 
+ 
+  ?>
+  
+  
+ <div class="searchtitle">Vereinsname:</div>
+<?php
+echo $this->formRow($form->get('Name'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">E-Mail:</div>
+<?php
+echo $this->formRow($form->get('Email'));
+?>
+<div class="clear"></div>
+
+
+
+
+ <div class="searchtitle">Vertreter:</div>
+<?php
+echo $this->formRow($form->get('Vereinsvertreter'));
+?>
+<div class="clear"></div><br/>
+
+
+
+ <div class="searchtitle">Kontoinhaber:</div>
+<?php
+echo $this->formRow($form->get('Bankkontoinhaber'));
+?>
+<div class="clear"></div>
+
+ <div class="searchtitle">IBAN:</div>
+<?php
+echo $this->formRow($form->get('IBAN'));
+?>
+<div class="clear"></div>
+
+ <div class="searchtitle">BIC:</div>
+<?php
+echo $this->formRow($form->get('BIC'));
+?>
+<div class="clear"></div><br/>
+
+ <div class="searchtitle">Straße:</div>
+<?php
+echo $this->formRow($form->get('Strasse'));
+?>
+<div class="clear"></div>
+
+ <div class="searchtitle">Hausnummer:</div>
+<?php
+echo $this->formRow($form->get('Hausnummer'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">Postleitzahl:</div>
+<?php
+echo $this->formRow($form->get('Postleitzahl'));
+?>
+<div class="clear"></div>
+
+
+ <div class="searchtitle">Ort:</div>
+<?php
+echo $this->formRow($form->get('Ort'));
+?>
+<div class="clear"></div><br/>
+
+
+ <div class="searchtitle">Admin E-Mail:</div>
+<?php
+echo $this->formRow($form->get('Adminemail'));
+?>
+<div class="clear"></div>
+
+
+
+ 
+ <?php /*
+ echo $this->formRow($form->get('pw1_verein'));
+ ?> <br/>
+ <?php 
+ echo $this->formRow($form->get('pw2_verein'));
+ */ ?> <br/>
+
+ <?php
+ echo $this->formSubmit($form->get('vreg'));
+ echo $this->form()->closeTag();
+ ?>
+ <!-- ab hier relevant für Zurücksetz-Button (PR, 13.12.14) -->
+ <?php
+ $form->setAttribute('action', $this->url('verein', array('action' => 'vregreset')));
+ $form->prepare();
+ echo $this->form()->openTag($form);
+ ?>
+ <br/>
+ <?php
+ echo $this->formSubmit($form->get('vregreset'));
+ echo $this->form()->closeTag();
+ ?>

@@ -1,0 +1,50 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Bestellungen';
+$this->headTitle($title);
+?>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<table class="table">
+	<tr>
+		<th>Artikelid</th>
+		<th>Status</th>
+		<th>Datum</th>
+		<th>Veranstalterid</th>
+		<th>Menge</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($bestellungen as $bestellung): 
+ $art = $artikel->getShop($bestellung->getArtikelid());
+ ?>
+ <tr>
+		    <td><?php echo $this->escapeHtml($art->getArtikelname()); ?></td>
+            <td><?php echo $this->escapeHtml($bestellung->getStatus()); ?></td>
+            <td><?php echo $this->escapeHtml($bestellung->getDatum()); ?></td>
+            <td><?php echo $this->escapeHtml($bestellung->getVeranstalterid()); ?></td>
+            <td><?php echo $this->escapeHtml($bestellung->getMenge()); ?></td>
+ <?php endforeach; ?>
+ </table>
+  <p>
+	<a
+		href="<?php
+
+echo $this->url('shop', array(
+    'action' => 'shopve'));
+?>" class="button">Zurück zum Shop</a>
+</p>

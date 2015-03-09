@@ -1,0 +1,17 @@
+ <?php
+	$title = 'Die Loginmail wurde geändert! Das neue Passwort erhalten Sie in Kürze vom Betreiber';
+	$this->headTitle ( $title );
+	?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+		echo $this->url ( 'login', array (
+				'action' => 'process' 
+		) );
+		?>">Zum Logout</a>
+</p>
+<?php
+
+?>

@@ -1,0 +1,23 @@
+<?php
+$title = 'Bonus-Cent-Betrag bearbeiten';
+$this->headTitle($title);
+?>
+
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<p>Multiplikator-ID: <?php echo $bonusbetrag->getId();?></p>
+<?php
+$form = $this->form;
+$url = $this->url('bonusbetrag', array('action' => 'edit', 'id' => $id));
+$form->setAttribute('action', $url);
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('wert'));?><br>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+</div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<br>
+<a href="<?php echo $this->url('bonusbetrag', array('action' => 'index'));?>">Zur&uumlck zur &Uumlbersicht</a>

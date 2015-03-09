@@ -1,0 +1,317 @@
+
+body {
+	background-color: white;
+	width: 100%;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+
+.running {
+	width: 100%;
+}
+
+
+.loginbuttons {
+	margin-top: -340px; 
+	margin-left: 20px; 
+	margin-bottom:288px; 
+	color: white;
+}
+
+div.extendedsearch {
+	margin-bottom: 50px;
+}
+
+div.extendedsearch input{
+	margin-right: 20px;
+	
+}
+
+
+.fb-like {
+	width: 100%;
+}
+
+.navigation div.logoimage {
+	background: url('../img/STARMINA_2014.png') center no-repeat;
+	width: 1100px;
+	height: 75px;
+	margin: 0 auto;
+}
+
+.container {
+	width: 1100px;
+}
+
+.transparent {
+	background: transparent;
+}
+
+.eventimage {
+	width: 97%;
+}
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+div.logo {
+	margin-top: -50px;
+	width: 100%;
+	text-align: center;
+}
+
+
+
+.navbar-collapse {
+	margin-top: 15px;
+	border-top: solid 4px rgb(196,196,196);
+	background: url('../img/bg_menu.jpg') center no-repeat rgb(40,200,187);
+}
+
+
+.navigation li a {
+	color: white;
+	font-weight: bold;
+	font-size: 1.1em;
+	text-shadow: 1px 1px 0px rgb(61,58,64);
+}
+
+.navigation li a:hover, .navigation li a:focus, .navigation li a:active {
+	color: black;
+	text-shadow: none;
+	background-color: rgb(196,196,196);
+}
+
+ul.navigation ul li a {
+	color: black;
+	font-weight: bold;
+	font-size: 1.1em;
+	text-shadow: none;
+}
+
+
+h1 {
+	margin-bottom: 25px;
+}
+
+
+.button {
+	background-color: #821982;
+	border: none;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: white;
+}
+
+.button:hover {
+	background-color: #b50cb5;
+	color: white;
+	text-decoration: none;
+}
+
+input[type="checkbox"] {
+	margin-right: 3px;
+}
+
+label {
+	margin-right: 15px;
+}
+
+label:hover {
+	cursor: pointer;
+}
+
+
+div.searcharea {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+div.searchtitle {
+	font-weight: bold;
+	font-size: 1.1em;
+	float: left;
+	width: 110px;
+	margin-bottom: 10px;
+}
+
+div.clear {
+	clear: both;
+}
+
+div.searchcategories {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+div.searchsports {
+	margin-bottom: 30px;
+}
+
+div.fleft {
+	float: left;
+}
+
+div.shopelement {
+	border: 6px solid white;
+}
+div.shopelement:hover {
+	border: solid 6px rgb(200,200,200);
+}
+
+pre {
+	display: none;
+}
+
+
+
+/* Responsive Layout */
+
+@media only screen and (max-width: 1100px) {
+
+.container {
+	width: 995px;
+}
+
+.loginbuttons {
+	margin-top: -140px; 
+	margin-left: 20px; 
+	margin-bottom:288px; 
+	color: white;
+}
+
+.navigation div.logoimage {
+	width: 990px;
+}
+
+}
+
+@media only screen and (max-width: 995px) {
+	
+	.container {
+		width: 767px;
+	}
+
+	.loginbuttons {
+		margin-top: -160px; 
+		margin-left: 20px; 
+		margin-bottom:288px; 
+		color: black;
+	}
+	
+	.navigation div.logoimage {
+		width: 760px;
+	}	
+}
+
+
+@media only screen and (max-width: 767px) {
+	
+	.container {
+		width: 478px;
+	}
+	
+	.loginbuttons {
+		margin-top: -270px; 
+		margin-left: 20px; 
+		margin-bottom:288px; 
+		color: black;
+	}
+	
+	.loginbuttons input[type="text"], .loginbuttons input[type="password"] {
+		width: 400px;
+		margin-bottom: 20px;
+	}
+	
+	.navigation div.logoimage {
+		width: 478px;
+	}
+	
+	.searchmobile {
+		display: none;
+	}
+
+	div.extendedsearch input{
+		float: none;
+		margin-right: 0px;
+		width: 478px;
+	}
+	
+	div.extendedsearch label{
+		display: block;
+	
+	}
+
+}
+
+
+
+@media only screen and (max-width: 478px) {
+
+	.container {
+		width: 400px;
+	}
+	
+	.running {
+		display: none;
+	}
+	
+	.navigation div.logoimage {
+		width: 350px;
+		
+	}
+	
+	.loginbuttons {
+		margin-top: -500px; 
+		margin-left: 20px; 
+		margin-bottom:288px; 
+		color: black;
+		width: 100%;
+	}
+	
+	.loginbuttons input[type="text"], .loginbuttons input[type="password"] {
+		width: 320px;
+		margin-bottom: 20px;
+	}
+	
+	.fb-like {
+		width: 320px;
+	}
+	
+	div.extendedsearch input{
+		float: none;
+		margin-right: 0px;
+		width: 320px;
+	}
+}

@@ -1,0 +1,23 @@
+<?php
+
+$title = 'Weiterueberweisen gruppiert: Sicherheitsabfrage Athletenbezahlung';
+$this->headTitle($title);
+?>
+<h1><u>Weiterueberweisen gruppiert: Sicherheitsabfrage Athletenbezahlung</u></h1>
+
+<p>Sind sie sich sicher dass sie die Buchung mit der an den Empfaenger weiterueberweisen wollen?
+ </p>
+<?php
+$url = $this->url('athletenbezahlung', array(
+    'action' => 'forwardgroup',
+
+    'sumwert' => $wertsum,
+    'useid' => $useid,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" /> <input type="submit"
+			name="del" value="Nein" />
+	</div>
+</form>

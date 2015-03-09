@@ -1,0 +1,68 @@
+<?php
+$title = 'Add new Event';
+$this->headTitle($title);
+?>
+<pre><?php echo print_r($test)?></pre>
+<pre><?php echo print_r($kategorien)?></pre>
+<?php foreach ($kategorien as $kategorie): ?>
+<pre><?php echo print_r($kategorie)?></pre>
+ <?php endforeach; ?>
+<pre><?php echo print_r($form)?></pre>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<?php
+
+$form = $this->form;
+$form->setAttribute('action', $this->url('event', array(
+    'action' => 'add'
+)));
+$form->get('submit')->setAttribute('value', 'Add');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formHidden($form->get('veranstaltungsid'));
+echo $this->formRow($form->get('name'));
+echo $this->formRow($form->get('postleitzahl'));
+echo $this->formRow($form->get('ort'));
+echo $this->formRow($form->get('strasse'));
+echo $this->formRow($form->get('hausnummer'));
+echo $this->formRow($form->get('anmeldegebuehr'));
+echo $this->formRow($form->get('datum'));
+echo $this->formRow($form->get('geschlecht'));
+echo $this->formRow($form->get('beschreibung'));
+echo $this->formRow($form->get('sportart'));
+echo $this->formRow($form->get('teilnehmerlimit'));
+echo $this->formRow($form->get('kategorien'));
+echo $this->formRow($form->get('altersminimum'));
+echo $this->formRow($form->get('altersmaximum'));
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('veranstaltung', array(
+    'action' => 'show', 'id'=> $verid
+));
+?>">Uebersicht</a>
+</p>

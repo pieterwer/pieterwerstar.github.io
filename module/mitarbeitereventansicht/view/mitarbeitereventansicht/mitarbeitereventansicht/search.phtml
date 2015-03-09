@@ -1,0 +1,86 @@
+<?php
+$title = 'Werbeauftrag suchen';
+$this->headTitle($title);
+?>
+<h1><u>Event suchen</u></h1>
+
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('mitarbeitereventansicht', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+<form action="search">
+  <table  cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">ID:</td>
+      <td><input name="id" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Name:</td>
+      <td><input name="name" type="text" size="30" maxlength="30"></td>
+    </tr>
+      <td align="right">Formular:</td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden" class="button">
+     
+    </tr>
+  </table>
+</form>
+
+<table class="table"  cellpadding="5" cellspacing="0" bgcolor="#E0E0E0" >
+	<tr>
+	    <th>ID</th>
+		<th>Veranstaltungsid</th>
+		<th>Teilnehmerlimit</th>
+		<th>Name</th>
+		<th>Ort</th>
+		<th>Vorgaengerid</th>
+		<th>Geschlechtsbeschraenkung</th>
+		<th>Meisterschaftsbeschraenkung</th>
+		<th>Anmeldegebuehr</th>
+		<th>Datum</th>
+		<th>Postleitzahl</th>
+		<th>Strasse</th>
+		<th>Hausnummer</th>
+		<th>Lizenz</th>
+		<th>Altersminimum</th>
+		<th>Altersmaximum</th>
+		<th>Status</th>
+	
+	</tr>
+ <?php
+if($MitarbeiterAnsichtevent!=NULL){
+ 
+ foreach ($MitarbeiterAnsichtevent as $Mitarbeitereventansicht1): ?>
+ <tr>
+	        <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getVeranstaltungsid()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getTeilnehmerlimit()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getName()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getOrt()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getVorgaengerid()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getGeschlechtsbeschraenkung()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getMeisterschaftsbeschraenkung()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getAnmeldegebuehr()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getDatum()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getPostleitzahl()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getStrasse()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getHausnummer()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getLizenz()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getAltersminimum()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getAltersmaximum()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeitereventansicht1->getStatus()); ?></td>
+            
+    		
+         
+			
+ <?php endforeach; 
+ 
+}?>
+ 
+ </table>

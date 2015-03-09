@@ -1,0 +1,41 @@
+<?php
+$title = 'Bild hinzufuegen fuer Veranstaltung';
+$this->headTitle($title);
+?>
+
+<pre><?php print_r($test)?></pre>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('bild', array(
+    'action' => 'event',
+    'id' => $id
+)));
+$form->get('submit')->setAttribute('value', 'Add');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('bildname')); ?>
+
+<?php 
+echo $this->formRow($form->get('fileupload'));
+// echo print_r(dirname(__DIR__));
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'index'
+));
+?>">Uebersicht</a>
+</p>

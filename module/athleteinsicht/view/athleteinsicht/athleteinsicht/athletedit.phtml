@@ -1,0 +1,109 @@
+
+<h1><u>Athlet bearbeiten</u></h1>
+
+<form action="athletedit">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    
+    <tr>
+      <td align="right">Name:</td>
+      <td><input name="name" value=<?php echo $name; ?>  type="text" size="30" maxlength="30"readonly></td>
+    </tr>
+    <tr>
+      <td align="right">Vorname:</td>
+      <td><input name="vorname" value=<?php echo $vorname; ?> type="text" size="30" maxlength="30" ></td>
+       
+    </tr>
+    <tr>
+      <td align="right">Titel:</td>
+      <td><input name="titel"  value=<?php if ($titel!=NULL){
+          echo $titel;
+      } ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Zusatz:</td>
+      <td><input name="zusatz"  value=<?php if ($zusatz!=NULL){
+          echo $zusatz;
+      } ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Geburtstag:</td>
+      <td><input name="geburtstag" value=<?php echo $geburtstag; ?>  type="date" size="30" maxlength="30"readonly></td>
+    </tr>
+   
+    <tr>
+      <td align="right">Geschlecht:</td>
+      <td><input name="geschlecht"  value=<?php echo $geschlecht; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+
+    <tr>
+      <td align="right">Telefonnummer1:</td>
+      <td><input name="telefonnummer1"  value=<?php echo $telefonnummer1; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+   <tr>
+      <td align="right">Telefonnummer2:</td>
+      <td><input name="telefonnummer2"  value=<?php if ($telefonnummer2!=NULL){
+          echo $telefonnummer2;
+      } ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+     <tr>
+      <td align="right">Telefonnummer3:</td>
+      <td><input name="telefonnummer3"  value=<?php if ($telefonnummer3!=NULL){
+          echo $telefonnummer3;
+      } ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+     <tr>
+      <td align="right">Fax:</td>
+      <td><input name="fax"  value=<?php if ($fax!=NULL){
+          echo $fax;
+      }  ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Email:</td>
+      <td><input name="email" value=<?php echo $email; ?>  type="text" size="30" maxlength="30" readonly></td>
+      
+
+      
+    </tr>
+    <tr>
+      <td align="right">Firma:</td>
+      <td><input name="firma" value=<?php echo $firma; ?>  type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">IBAN:</td>
+      <td><input name="iban"  value=<?php echo $iban; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">BIC:</td>
+      <td><input name="bic"  value=<?php echo $bic; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Historie:</td>
+      <td><input name="historie"  value=<?php echo $historie; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Umkreis:</td>
+      <td><input name="umkreis"  value=<?php echo $umkreis; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Werbung:</td>
+      <td><input name="werbung"  value=<?php echo $werbung; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    
+    
+    
+
+
+    </tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value="Bearbeiten" name="absenden">
+     
+    </tr>
+  </table>
+</form>
+

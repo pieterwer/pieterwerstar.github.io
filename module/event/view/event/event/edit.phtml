@@ -1,0 +1,40 @@
+<?php
+$title = 'Event bearbeiten';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$url = $this->url('event', array(
+    'action' => 'edit',
+    'id' => $id
+));
+$form->setAttribute('action', $url);
+$form->get('submit')->setAttribute('value', 'Edit');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formHidden($form->get('veranstaltungsid'));?><br/>Name<?php
+echo $this->formRow($form->get('name'));?><br/>PLZ<?php
+echo $this->formRow($form->get('postleitzahl'));?><br/>Ort<?php
+echo $this->formRow($form->get('ort'));?><br/>Strasse<?php
+echo $this->formRow($form->get('strasse'));?><br/>Hausnummer<?php
+echo $this->formRow($form->get('hausnummer'));?><br/>Gebühr<?php
+echo $this->formRow($form->get('anmeldegebuehr'));?><br/>Datum<?php
+echo $this->formRow($form->get('Date'));?><br/>Zeit<?php
+echo $this->formRow($form->get('Time'));?><br/>Geschlecht<?php
+echo $this->formRow($form->get('geschlechtsbeschraenkung'));?><br/>Meisterschaft<?php
+echo $this->formRow($form->get('meisterschaftsbeschraenkung'));?><br/>Beschreibung<?php
+echo $this->formRow($form->get('beschreibung'));?><br/>Sportart<?php
+echo $this->formRow($form->get('sportart'));?><br/>Teilnehmerlimit<?php
+echo $this->formRow($form->get('teilnehmerlimit'));?><br/>Kategorie<?php
+echo $this->formRow($form->get('kategorien'));?><br/>Minimum<?php
+echo $this->formRow($form->get('altersminimum'));?><br/>Maximum<?php
+echo $this->formRow($form->get('altersmaximum'));?>
+
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);

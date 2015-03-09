@@ -1,0 +1,61 @@
+<img src="../../img/4path.png" width="720" height="136" alt="4path" style="margin-left: 200px; margin-top: 30px"></a>
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = '';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'add',
+    'id' => $veranstaltung->getId()
+));
+?>">Weiteres Event zu dieser Veranstaltung hinzufügen?</a>
+</p>
+<br>
+<p><h2>Veranstaltung</h2></p>
+
+	Der Name der Veranstaltung ist:
+		
+		<?php echo $this->escapeHtml($veranstaltung->getName()); ?>
+	
+		
+		
+			
+ <br />
+ <br>
+ <p><h2>Event</h2></p>
+ <table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Ort</th>
+		<th>PLZ</th>
+		<th>Strasse</th>
+		<th>Hausnummer</th>
+		<th>Datum</th>
+		<th>Meisterschaft</th>
+		<th>Geschlecht</th>
+		<th>Gebuehr</th>
+		<th>&nbsp;</th>
+	</tr>
+ <tr>
+		<td><?php echo $this->escapeHtml($event->getName()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getPostleitzahl()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getStrasse()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getHausnummer()); ?></td>
+		<td><?php echo $this->escapeHtml(DateTime::createFromFormat('Y-m-d H:i:s', $event->getDatum())->format('Y-m-d H:i')); ?></td>
+		<td><?php echo $event->getMeisterschaftsbeschraenkung() ? $event->getMeisterschaftsbeschraenkung() : 'No'; ?></td>
+		<td><?php echo $event->getGeschlechtsbeschraenkung() != NULL ? $event->getGeschlechtsbeschraenkung() : 'No'; ?></td>
+		<td><?php echo $this->escapeHtml($event->getAnmeldegebuehr()); ?> &#8364;</td>
+     
+ </table>
+<br>
+<p><h2>Strecke</h2></p>
+
+Die Streckenlänge beträgt		
+	
+            <?php echo $this->escapeHtml($strecke->getStreckenlaenge()); ?> km

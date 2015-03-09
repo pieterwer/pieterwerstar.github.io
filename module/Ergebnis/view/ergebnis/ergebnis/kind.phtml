@@ -1,0 +1,37 @@
+<?php
+$title = 'erfolgreiche Anmeldung zum Event';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Ort</th>
+		<th>PLZ</th>
+		<th>Strasse</th>
+		<th>Hausnummer</th>
+		<th>Datum</th>
+		<th>Meisterschaft</th>
+		<th>Geschlecht</th>
+		<th>Gebuehr</th>
+		<th>Sportart</th>
+		<th>&nbsp;</th>
+	</tr>
+ <tr>
+		<td><?php echo $this->escapeHtml($event->getName()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getPostleitzahl()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getStrasse()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getHausnummer()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getDatum()); ?></td>
+		<td><?php echo $event->getMeisterschaftsbeschraenkung() ? $event->getMeisterschaftsbeschraenkung() : 'No'; ?></td>
+		<td><?php echo $event->getGeschlechtsbeschraenkung() ? $event->getGeschlechtsbeschraenkung() : 'No'; ?></td>
+		<td><?php echo $this->escapeHtml($event->getAnmeldegebuehr()); ?> &#8364;</td>
+		<td><?php echo $this->escapeHtml($event->getSportart()->getBezeichnung()?$event->getSportart()->getBezeichnung(): 'Keine Angaben'); ?></td>
+		<td></td>
+	</tr>
+ </table>
+ 

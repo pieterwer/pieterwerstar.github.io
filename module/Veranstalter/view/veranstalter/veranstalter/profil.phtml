@@ -1,0 +1,79 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'My veranstalter list';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('veranstalter', array(
+    'action' => 'add'
+));
+?>">Add new item</a>
+</p>
+
+
+<table class="table">
+	<tr>
+		<td>Name</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getName()); ?></td>
+	</tr>
+	<tr>	
+		<td>Vorname</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getVorname()); ?></td>
+	</tr>	
+	<tr>
+		<td>Email</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getEmail()); ?></td>
+	</tr>	
+	<tr>
+		<td>Iban</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getBic()); ?></td>
+	</tr>
+	<tr>	
+		<td>Bic</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getBic()); ?></td>
+	</tr>	
+	<tr>
+		<td>Verifizierung</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getVerifiziert()); ?></td>
+	</tr>	
+	<tr>
+		<td>Firmenname</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getFirmenname()); ?></td>
+	</tr>	
+	<tr>
+		<td>Strasse</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getStrasse()); ?></td>
+	</tr>	
+	<tr>
+		<td>Hausnummer</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getHausnummer()); ?></td>
+	</tr>	
+	<tr>
+		<td>Postleitzahl</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getPostleitzahl()); ?></td>
+	</tr>
+	<tr>	
+		<td>Ort</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getOrt()); ?></td>
+	</tr>	
+ </table>
+  <?php $i = 0;?>
+ <table class="table">
+ <?php foreach ($veranstaltungen as $veranstaltung): ?>
+ <tr>
+	<td><a href="<?php  
+                 echo $this->url('veranstaltung', array(
+                     'action' => 'profil',
+                        'id' => $veranstaltung->getId()
+                   ));
+                 ?>"><?php echo $this->escapeHtml($veranstaltung->getName()); ?></a></td>
+    <td><img src="<?php echo $this->escapeHtml($mapper->createlink($stern[$i]));?>" width="100" height="25" />
+   (Durchschnitt:  <?php echo $this->escapehtml($stern[$i])?>)</td>
+    <?php $i++;?>          	         	
+ <?php endforeach; ?>
+ 
+ </table>

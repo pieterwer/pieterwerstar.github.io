@@ -1,0 +1,53 @@
+<?php
+$title = 'Werbeauftrag editieren';
+$this->headTitle($title);
+?>
+<h1>
+	<u>Werbeauftrag editieren</u>
+</h1>
+
+<?php
+
+if ($this->flashMessenger()->hasMessages()) {
+    
+    echo '<div class="alert alert-info">';
+    
+    $messages = $this->flashMessenger()->getMessages();
+    foreach ($messages as $message) {
+        echo $message;
+    }
+    
+    echo '</div>';
+}
+
+?>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('werbeauftrag', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+<?php
+$form = $this->form;
+$url = $this->url('werbeauftrag', array(
+    'action' => 'edit',
+    'id' => $id
+));
+$form->setAttribute('action', $url);
+$form->get('submit')->setAttribute('value', 'Bearbeiten');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('name'));
+
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+
+<?php
+echo $this->form()->closeTag($form);

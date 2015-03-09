@@ -1,0 +1,25 @@
+<?php
+$title = 'Zurueckueberweisen Verein: Sicherheitsabfrage';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Sind sie sich sicher dass sie die Buchung mit der ID:
+   '<?php echo $this->escapeHtml($vereinbezahlung->getId()); ?>' an den Verein mit der ID: '<?php echo $this->escapeHtml($vereinbezahlung->getVereinid()); ?>' zurueckueberweisen wollen?
+           Wert: '<?php echo $this->escapeHtml($vereinbezahlung->getWert()); ?>'
+ </p>
+<?php
+$url = $this->url('vereinbezahlung', array(
+    'action' => 'back',
+    'id' => $vereinbezahlung->getId(),
+    'vereinid' => $vereinbezahlung->getVereinid(),
+    'wert' => $vereinbezahlung->getWert()
+    
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" /> <input type="submit"
+			name="del" value="Nein" />
+	</div>
+</form>

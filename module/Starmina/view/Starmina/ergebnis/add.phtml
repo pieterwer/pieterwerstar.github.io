@@ -1,0 +1,40 @@
+<?php
+$title = 'Add Ergebnisse';
+$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('ergebnis', array(
+    'action' => 'add'
+)));
+$form->get('submit')->setAttribute('value', 'Add');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('eventid'));
+echo $this->formRow($form->get('athletid'));
+echo $this->formRow($form->get('zeit'));
+echo $this->formRow($form->get('gesamtplatzierung'));
+echo $this->formRow($form->get('altersklassenplatzierung'));
+echo $this->formRow($form->get('geburtstag'));
+
+// echo $this->formRow($form->get('bildname'));
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('ergebnis', array(
+    'action' => 'index'
+));
+?>">Uebersicht</a>
+</p>

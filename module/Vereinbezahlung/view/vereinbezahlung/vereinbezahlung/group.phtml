@@ -1,0 +1,41 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'alle Vereinsbuchungen gruppiert nach Verwendungszweck';
+$this->headTitle($title);
+?>
+<h1><u>alle Vereinsbuchungen gruppiert nach Verwendungszweck</u></h1>
+
+
+<table class="table" border="2" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr bgcolor=#F7FAAC>
+		<th>Verwendungszweck</th>
+		<th>Anzahl der Vereine</th>
+		<th>Wert</th>
+		<th>Weiter&uumlberweisen</th>
+	</tr>
+ <?php foreach ($vereinbezahlungen as $vereinbezahlung): ?>
+ <tr>
+            <td> <?php echo $this->escapeHtml($vereinbezahlung->getVerwendungszweck()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getAnzahlvereine()); ?></td>
+    		<td><?php echo $this->escapeHtml($vereinbezahlung->getWertsum()); ?>&#8364;</td>
+    		<td><a
+    		
+    		
+    		
+    		
+			href="<?php
+        echo $this->url('vereinbezahlung', array(
+        'action' => 'forwardgroup',
+        'wert'=> $vereinbezahlung->getWertsum(),
+        'useid' => $vereinbezahlung->getVerwendungszweck()
+    ));
+        
+        
+        
+    ?>"><img src="http://cdns2.freepik.com/fotos-kostenlos/pfeil-rechts-grun-clip-art_427400.jpg" width="70" height="40" ></a></td>
+
+    
+
+    					
+ <?php endforeach; ?>
+ </table>

@@ -1,0 +1,36 @@
+<?php
+$title = 'Veranstalter verifizieren';
+$this->headTitle($title);
+?>
+ <b>
+<?php 
+if ($this->flashMessenger()->hasMessages())
+{
+    echo '<div class="alert alert-info">';
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) { echo $message; }
+    echo '</div>';
+}
+?>
+</b>
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<hr width=“15“ size=“1“ noshade=“noshade“ align=“left“ />
+ <?php
+ $this->form->setAttribute('action', $this->url('veranstalterverifizieren', array('action' => 'index')));
+ $this->form->prepare();
+
+ echo $this->form()->openTag($this->form);
+ echo "W&aumlhlen Sie hier den Veranstalter, den Sie verifizieren m&oumlchten:"; echo "<br><br>";
+ echo $this->formRow($this->form->get('veranstalterid'));
+ ?>
+ <div>
+ <br>
+ <?php echo $this->formInput($this->form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($this->form);
+?>
+<br>
+<p>
+   <a href="<?php echo $this->url('anfragen');?>">Zur&uumlck</a>
+</p>

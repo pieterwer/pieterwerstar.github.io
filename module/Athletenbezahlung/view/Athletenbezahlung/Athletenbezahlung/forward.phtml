@@ -1,0 +1,24 @@
+<?php
+$title = 'Weiterueberweisen: Sicherheitsabfrage';
+$this->headTitle($title);
+?>
+<h1><u>Weiter&uumlberweisen: Sicherheitsabfrage</u></h1>
+
+<p>Sind sie sich sicher dass sie die Buchung mit der ID:
+   '<?php echo $this->escapeHtml($athletenbezahlung->getId()); ?>' an den Empfaenger weiterueberweisen wollen?
+ </p>
+<?php
+$url = $this->url('athletenbezahlung', array(
+    'action' => 'forward',
+    'id' => $id,
+    'athletid' => $athletid,
+    'wert' => $wert,
+    'useid' => $useid,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" /> <input type="submit"
+			name="del" value="Nein" />
+	</div>
+</form>

@@ -1,0 +1,110 @@
+<?php
+$title = 'Verein bearbeiten';
+$this->headTitle($title);
+?>
+<h1><u>Verein bearbeiten</u></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('vereineinsicht', array(
+    'action' => 'index'
+));
+?>">Zur&uuml;ck zur &Uuml;bersicht</a>
+</p>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<form action="edit">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">ID:</td>
+      <td><input name="id" value=<?php echo $id; ?> type="text" size="30" maxlength="30" readonly></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Name:</td>
+      <td><input name="name" value=<?php echo $name; ?>  type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Adminemail:</td>
+      <td><input name="adminemail" value=<?php echo $adminemail; ?> type="text" size="30" maxlength="30" readonly></td>
+       
+    </tr>
+    <tr>
+      <td align="right">IBAN:</td>
+      <td><input name="iban"  value=<?php echo $iban; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">BIC:</td>
+      <td><input name="bic"  value=<?php echo $bic; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      <td align="right">Email:</td>
+      <td><input name="email" value=<?php echo $email; ?>  type="text" size="30" maxlength="30"></td>
+    </tr>
+   
+    <tr>
+      <td align="right">Strasse:</td>
+      <td><input name="strasse"  value=<?php echo $strasse; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+
+    <tr>
+      <td align="right">Hausnummer:</td>
+      <td><input name="hausnummer"  value=<?php echo $hausnummer; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+  
+     <tr>
+      <td align="right">PLZ:</td>
+      <td><input name="plz"  value=<?php echo $plz; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Ort:</td>
+      <td><input name="ort" value=<?php echo $ort; ?>  type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    <tr>
+      
+      
+      <td align="right"> Status:
+    <select name="status" size="2">
+      <option>1</option>
+      <option>0</option>
+     
+    </select>
+    </td>
+    </tr>
+    
+    <tr>
+      <td align="right">Kontoinhaber:</td>
+      <td><input name="kontoinhaber"  value=<?php echo $bankkontoinhaber; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Vereinsvertreter:</td>
+      <td><input name="vereinsvertreter"  value=<?php echo $vereinsvertreter; ?> type="text" size="30" maxlength="30"></td>
+    </tr>
+    
+    
+
+
+    </tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden" class="button">
+     
+    </tr>
+  </table>
+</form>

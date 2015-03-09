@@ -1,0 +1,48 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Mitarbeiterliste';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<a
+		href="<?php
+
+echo $this->url('betreiber', array(
+    'action' => 'add' , 'id' => $betreiber->getId()
+));
+?>">Add new item</a>
+
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Email</th>
+		<th>Vorname</th>
+		<th>Nachname</th>
+		<th></th>
+		<th>&nbsp;</th>
+	</tr>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('betreiber', array(
+        'action' => 'show',
+        'id' => $betreiber->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($betreiber->getId()); ?></a></td>
+		<td><?php echo $this->escapeHtml($betreiber->getEmail()); ?></td>
+		<td><?php echo $this->escapeHtml($betreiber->getVorname()); ?></td>
+		<td><?php echo $this->escapeHtml($betreiber->getNachname()); ?></td>
+
+ </table>
+ 
+ <a
+		href="<?php
+
+echo $this->url('betreiber', array(
+    'action' => 'show'
+));
+?>">Zur Uebersicht</a>

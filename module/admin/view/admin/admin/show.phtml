@@ -1,0 +1,48 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Adminliste';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<a
+		href="<?php
+
+echo $this->url('admin', array(
+    'action' => 'add' , 'id' => $admin->getId()
+));
+?>">Add new item</a>
+
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Email</th>
+		<th>Vorname</th>
+		<th>Nachname</th>
+		<th></th>
+		<th>&nbsp;</th>
+	</tr>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('admin', array(
+        'action' => 'show',
+        'id' => $admin->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($admin->getId()); ?></a></td>
+		<td><?php echo $this->escapeHtml($admin->getEmail()); ?></td>
+		<td><?php echo $this->escapeHtml($admin->getVorname()); ?></td>
+		<td><?php echo $this->escapeHtml($admin->getNachname()); ?></td>
+
+ </table>
+ 
+ <a
+		href="<?php
+
+echo $this->url('admin', array(
+    'action' => 'show'
+));
+?>">Zur Uebersicht</a>

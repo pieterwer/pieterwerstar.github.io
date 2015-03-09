@@ -1,0 +1,106 @@
+<?php
+$title = $veranstaltung->getName();
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><img src="<?php echo $link;?>" width="124" height="25" />
+(Durchschnitt: <?php echo $this->escapeHtml($bewertung); ?>)</p>
+<p><?php if($vbewertung)
+    echo "Vorjahresbewertung: ";
+    echo $this->escapeHtml($vbewertung);
+    ?>
+    <img src="img/<?= $bild->getLink($veranstaltung->getBildid())?>" width="1140" height="390" alt="<?= $veranstaltung->getName()?>"/>   
+    </p>
+<table class="table">
+	<tr>
+		<td>Name</td>
+		<td><?php echo $this->escapeHtml($veranstaltung->getName()); ?></td>
+    </tr>
+    <tr>         
+		<td>Veranstalter</td>
+		<td><?php echo $this->escapeHtml($veranstalter->getName()); ?>
+		    <?php echo $this->escapeHtml($veranstalter->getVorname()); echo "<br>"; ?>
+		    <a href="<?php
+                    echo $this->url('veranstalter', array(
+                    'action' => 'profil',
+                    'id' => $veranstalter->getId()
+                        
+                    ));?>">
+		    <?php echo $this->escapeHtml($veranstalter->getFirmenname());  ?></a></td>
+	</tr>	
+			<td><a
+			href="<?php
+    
+echo $this->url('veranstaltung', array(
+        'action' => 'index'    ));
+    ?>">Übersicht Veranstaltung</a>
+		</td>
+		<td></td>
+	</tr>
+ </table>
+ 
+ <table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Ort</th>
+		<th>PLZ</th>
+		<th>Datum</th>
+		<th>Geschlecht</th>
+		<th>Gebuehr</th>
+		<th>&nbsp;</th>
+	</tr>
+ <?php foreach ($events as $event): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('event', array(
+        'action' => 'show',
+        'id' => $event->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($event->getName()); ?></a></td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getPostleitzahl()); ?></td>
+		<td><?php echo $this->escapeHtml(DateTime::createFromFormat('Y-m-d H:i:s', $event->getDatum())->format('Y-m-d H:i')); ?></td>
+		<td><?php echo $event->getGeschlechtsbeschraenkung() != NULL ? $event->getGeschlechtsbeschraenkung() : 'No'; ?></td>
+		<td><?php echo $this->escapeHtml($event->getAnmeldegebuehr()); ?> &#8364;</td>
+		                 <td><a href="<?php  
+                 echo $this->url('ergebnis', array(
+                     'action' => 'ergebnis',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             Ergebnisse</a></td>    
+                 <td><a href="<?php  
+                 echo $this->url('bewertung', array(
+                     'action' => 'durchschnitt',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             Bewertungen</a></td>     
+ <?php endforeach; ?>
+ </table>
+ 
+  <p>Die letzten 3 Bewertungen:</p>
+  <?php 
+ if(empty($bewertungen)) 
+ {
+    echo "Es sind noch keine Bewertungen vorhanden";    
+ }
+ else
+  {    
+  foreach ($bewertungen as $bewertung): ?>
+  <div style="width: 300px; float:left; margin-right:80px; border: 3px solid #E6E6E6; padding:5px;"><tr>
+    <?php error_reporting(0);
+     $x = $athlet->getAthlet($bewertung->getAthletid());
+error_reporting(E_ALL); ?>
+    <?php $y = $get->getEvent($bewertung->getEventid());?>
+            <td><?php echo $this->escapeHtml($y->getName());?><br><?php echo $this->escapeHtml($x->Name);?> <?php  echo $this->escapeHtml($x->Vorname);?></td>
+    		<td>
+    		<img src="img/<?= $star->createLink3($bewertung->getLikert())?>" width="124" height="25" />
+    		</td><br /><hr />
+    		<td><?php echo $this->escapeHtml($bewertung->getText()); ?></td>			
+ </div>
+ <?php endforeach; }?>
+ <br />

@@ -1,0 +1,22 @@
+<?php
+$title = 'Label-Event-Zuordnung - Status bearbeiten';
+$this->headTitle($title);
+?>
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<p>Label-Event-Zuordnung(Event-ID: <?php echo $labeleventzuordnung->getEventId();?>, Label-ID: <?php echo $labeleventzuordnung->getLabelId();?>)</p>
+<?php
+$form = $this->form;
+$url = $this->url('labeleventzuordnung', array('action' => 'editstatus', 'eventid' => $eventid, 'labelid' => $labelid));
+$form->setAttribute('action', $url);
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('status'));?><br>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+</div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<br>
+<a href="<?php echo $this->url('labeleventzuordnung', array('action' => 'index'));?>">Zur&uumlck zur &Uumlbersicht</a>

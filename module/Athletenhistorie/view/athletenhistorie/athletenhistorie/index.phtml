@@ -1,0 +1,58 @@
+<?php
+$title = 'Meine Ergebnisse';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+
+
+
+
+
+<table class="table">
+	<tr>
+	    <th>Eventid</th>
+	    <th>Eventname</th>
+	    <th>Gesamtplatzierung</th>
+		<th>Altersklassenplatzierung</th>
+		<th>Zeit</th>
+		<th></th>
+	</tr>
+ <?php 
+ if($athletenhistorien!=NULL){
+ foreach ($athletenhistorien as $athletenhistorie): 
+
+ ?>
+ <tr>
+
+            <td><?php echo $this->escapeHtml($athletenhistorie->getEventid()); ?></td>
+            <td><?php 
+            
+            
+            
+           
+                
+                
+                echo $this->escapeHtml($eventnamensarray[$i]["Name"]);
+                
+                
+            
+            ?></td>
+            
+            <td><?php echo $this->escapeHtml($athletenhistorie->getGesamtplatzierung()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenhistorie->getAltersklassenplatzierung()); ?></td>
+            
+            
+            
+            <td><?php echo $this->escapeHtml($athletenhistorie->getZeit()); ?> min</td>
+            
+    		
+         
+			
+ <?php 
+ $i++;
+ endforeach; 
+ }
+ ?>
+ </table>

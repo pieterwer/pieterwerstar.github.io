@@ -1,0 +1,35 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'alle Athletenbuchungen gruppiert nach Verwendungszweck';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<table class="table">
+	<tr>
+		<th>Verwendungszweck</th>
+		<th>Anzahl der Athleten</th>
+		<th>Wert</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($athletenbezahlungen as $athletenbezahlung): ?>
+ <tr>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getVerwendungszweck()); ?></td>
+    		<td><?php echo $this->escapeHtml($athletenbezahlung->getAnzahlathleten()); ?></td>
+    		<td><?php echo $this->escapeHtml($athletenbezahlung->getWertsum()); ?></td>
+    		<td><a
+			href="<?php
+        echo $this->url('athletenbezahlung', array(
+        'action' => 'forwardgroup',
+        'wert'=> $athletenbezahlung->getWertsum(),
+        'useid' => $athletenbezahlung->getVerwendungszweck()
+    ));
+    ?>">Weiterüberweisen</a></td>
+
+   
+
+    					
+ <?php endforeach; ?>
+ </table>

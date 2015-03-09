@@ -1,0 +1,95 @@
+<?php
+$title = 'Bezahlungen filtern';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<form action="search">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">AthletenID:</td>
+      <td><input name="id" type="text" size="30" maxlength="30"></td>
+    </tr>
+     <tr>
+      <td align="right">Verwendungszweck:</td>
+      <td><input name="useid" type="text" size="30" maxlength="30"></td>
+    </tr>
+      <td align="right">Formular:</td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden">
+    </tr>
+  </table>
+</form>
+
+<table class="table"border="2" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr>
+		<th>ID</th>
+		<th>IBAN</th>
+		<th>BIC</th>
+		<th>Datum</th>
+		<th>AthletenID</th>
+		<th>Wert</th>
+		<th>Verwendungszweck</th>
+		<th>Verwendungsart</th>
+		<th>Weiter&uumlberweisen</th>
+		<th>Zur&uumlck&uumlberweisen</th>
+	</tr>
+	
+	
+ <?php foreach ($athletenbezahlungen as $athletenbezahlung): ?>
+ <tr>
+	
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getID()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getIban()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getBic()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getDate()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getAthletid()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getWert()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getVerwendungszweck()); ?></td>
+            <td><?php echo $this->escapeHtml($athletenbezahlung->getVerwendungsart()); ?></td>
+           
+            <td><a
+			href="<?php
+    
+echo $this->url('athletenbezahlung', array(
+        'action' => 'forward',
+        'id' => $athletenbezahlung->getId(),
+        
+        'athletid' => $athletenbezahlung->getAthletid(),
+        'wert'=> $athletenbezahlung->getWert(),
+        'useID' => $athletenbezahlung->getVerwendungszweck()
+    ));
+    ?>">Weiter&uumlberweisen</a></td>
+
+    
+    
+  
+  
+    <td><a
+			href="<?php
+    
+        echo $this->url('athletenbezahlung', array(
+        'action' => 'back',
+        'id' => $athletenbezahlung->getId(),
+        'athletid' => $athletenbezahlung->getAthletid(),
+        'wert'=> $athletenbezahlung->getWert()
+    ));
+    ?>">Zur&uumlck&uumlberweisen</a></td>
+           
+    		
+         
+			
+ <?php endforeach; ?>
+ </table>
+
+
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('athletenbezahlung', array(
+    'action' => 'index'
+));
+?>">&Uumlbersicht</a>
+</p>

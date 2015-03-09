@@ -1,0 +1,21 @@
+<?php
+$title = 'Betreiber entfernen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Sind sie sich sicher dass sie den Betreiber mit der Emailadresse
+   '<?php echo $email; ?>'?
+ </p>
+<?php
+$url = $this->url('betreiber', array(
+    'action' => 'delete',
+    'email' => $email
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" class="button"/> <input type="submit"
+			name="del" value="Nein" class="button"/>
+	</div>
+</form>

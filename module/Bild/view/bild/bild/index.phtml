@@ -1,0 +1,48 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'My Bild list';
+$this->headTitle($title);
+use Zend\Form\Element;
+
+$element = new Element\Image('my-image');
+$element->setAttribute('src', 'bild/PNG_transparency_demonstration_1.png');
+$test = dirname(__DIR__);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('bild', array(
+    'action' => 'add'
+));
+?>">Add new item</a>
+</p>
+
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Link</th>
+		<th>Bildname</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($bildn as $bild): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('bild', array(
+        'action' => 'edit',
+        'id' => $bild->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($bild->getId()); ?></a></td>
+            <td><?php echo $this->escapeHtml($bild->getLink()); ?></td>
+    		<td><?php echo $this->escapeHtml($bild->getBildname()); ?></td>
+    		<td><img src="img/<?= $bild->getLink()?>" width="100" height="100" alt="<?= $bild->getBildname()?>"/></td>
+    		<td><?php echo $this->escapeHtml($test)?></td>
+    		
+ <?php endforeach; ?>
+ </table>

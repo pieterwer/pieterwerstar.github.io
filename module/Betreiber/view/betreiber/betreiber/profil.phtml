@@ -1,0 +1,26 @@
+ <?php
+ $title = 'Betreiber-Verwaltung';
+ $this->headTitle($title);
+ ?>
+ 
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+  <p>
+     <a href="<?php echo $this->url('athlet', array('action'=>'delete', 'edit', 'profil', 'registrieren'));?>">Athleten verwalten</a>
+ </p>
+  <p>
+     <a href="<?php echo $this->url('verein', array('action'=>'delete', 'edit', 'profil', 'registrieren'));?>">Vereine verwalten</a>
+ </p>
+   <p>
+     <a href="<?php echo $this->url('veranstalter', array('action'=>'add', 'delete', 'edit', 'index', 'show', 'showdetail'));?>">Veranstalter verwalten</a>
+ </p>
+  <p>
+     <a href="<?php echo $this->url('veranstaltungen', array('action'=>'add', 'index', 'show'));?>">Veranstaltungen verwalten</a>
+ </p>
+   <p>
+     <a href="<?php echo $this->url('event', array('action'=>'add', 'delete', 'edit', 'index', 'show','showdetail'));?>">Events verwalten</a>
+ </p>
+
+<?php
+
+?>

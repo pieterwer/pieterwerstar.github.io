@@ -1,0 +1,42 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Meine gemeldeten Events (mit Ergebnis)';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<table class="table">
+	<tr>
+		<th>Event-ID</th>
+		<th>Zeit</th>
+		<th>Gesamtplatzierung</th>
+		<th>Altersklassenplatzierung</th>
+		<th>Alter</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($ergebnisse as $ergebnis): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('event', array(
+        'action' => 'showdetail',
+        'id' => $ergebnis->getEventId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($ergebnis->getEventId()); ?></a></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getZeit()); ?></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getGesamtplatzierung()); ?></td>
+    		<td><?php echo $this->escapeHtml($ergebnis->getAltersklassenplatzierung()); ?></td>
+    		<td><?php echo $this->escapeHtml($ergebnis->getAlter()); ?></td>
+            
+            <td>
+         <a href="<?php echo $this->url('ergebnis',
+             array('action'=>'abmelden', 'id' => $ergebnis->getEventId()));?>">Abmelden</a>
+           </td>
+           </tr>
+ <?php endforeach; ?>
+    </table>  		
+

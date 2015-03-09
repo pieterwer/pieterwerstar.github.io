@@ -1,0 +1,38 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Werbeauftragsliste';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<table class="table"border="2" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr>
+		<th>Name</th>
+		<th>Loeschen</th>
+		<th>Editieren</th>
+	</tr>
+ <?php foreach ($werbeauftrage as $werbeauftrag): ?>
+ <tr>
+	
+            <td><?php echo $this->escapeHtml($werbeauftrag->getName()); ?></td>
+            <td><a href="<?php  
+                 echo $this->url('werbeauftrag', array(
+                     'action' => 'delete',
+                        'id' => $werbeauftrag->getId()
+                   ));
+                 ?>">
+             Loeschen</a></td>
+              <td><a href="<?php  
+                 echo $this->url('werbeauftrag', array(
+                     'action' => 'edit',
+                        'id' => $werbeauftrag->getId()
+                   ));
+                 ?>">
+             Editieren</a></td>
+           
+    		
+         
+			
+ <?php endforeach; ?>
+ </table>

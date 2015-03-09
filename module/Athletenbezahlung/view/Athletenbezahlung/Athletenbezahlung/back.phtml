@@ -1,0 +1,24 @@
+<?php
+$title = 'Zurueckueberweisen: Sicherheitsabfrage';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Sind sie sich sicher dass sie die Buchung mit der ID:
+   '<?php echo $this->escapeHtml($athletenbezahlung->getId()); ?>' an den Empfaenger zurueckueberweisen wollen?
+ </p>
+<?php
+$url = $this->url('athletenbezahlung', array(
+    'action' => 'back',
+    'id' => $id,
+    'athletid' => $athletid,
+    'wert' => $wert
+    
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" /> <input type="submit"
+			name="del" value="Nein" />
+	</div>
+</form>

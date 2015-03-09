@@ -1,0 +1,122 @@
+<?php
+$title = 'Ihre Events';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+
+?>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'add'
+));
+?>">Neues Event anlegen</a>
+
+
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'multiplikator'
+));
+?>">Cashback-Aktion beantragen</a>
+</p>
+
+
+<table class="table">
+	<tr>
+		<th></th>
+		<th>Name</th>
+        <th>PLZ</th>
+		<th>Ort</th>
+		<th>Datum</th>
+		<th>Gebuehr</th>
+        <th>Bild</th>
+        <th>Bild hinzufügen</th>
+        <th>Historie</th>
+        <th>Löschen</th>
+        <th>Ergebnisse</th>
+        <th>Bewertungen</th>
+        <th>Label</th>
+		<th>&nbsp;</th>
+	</tr>
+ <?php foreach ($events as $event): ?>
+ <tr>
+		<th><?php if($event->getStatus() == 0)
+		{
+		    echo "nicht oeffentlich";
+		}?></th>
+		<td><a
+			href="<?php
+    
+echo $this->url('event', array(
+        'action' => 'edit',
+        'id' => $event->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($event->getName()); ?></a></td>
+             		<td><?php echo $this->escapeHtml($event->getPostleitzahl()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+		<td><?php echo $this->escapeHtml(DateTime::createFromFormat('Y-m-d H:i:s', $event->getDatum())->format('Y-m-d H:i')); ?></td>
+		<td><?php echo $this->escapeHtml($event->getAnmeldegebuehr()); ?> &#8364;</td>
+		<td><img src="img/<?= $bild->getLink2($event->getBildid())?>" width="100" height="100" alt="<?= $event->getName()?>"/></td>
+		<td><a href="<?php  
+                echo $this->url('bild', array(
+                     'action' => 'event',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             <img src="../img/add.png" width="30" height="30" alt="add"></a></td>
+		<td><a href="<?php  
+                 echo $this->url('event', array(
+                     'action' => 'hist',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             <img src="../img/historie.png" width="30" height="30" alt="historie"></a></td>	
+          <td><a href="<?php  
+                 echo $this->url('event', array(
+                     'action' => 'delete',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             <img src="../img/delete.png" width="30" height="30" alt="delete"></a></td>   
+                 <td><a href="<?php  
+                 echo $this->url('ergebnis', array(
+                     'action' => 'ergebnis',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             <img src="../img/result.png" width="30" height="30" alt="result"></a></td>    
+                 <td><a href="<?php  
+                 echo $this->url('bewertung', array(
+                     'action' => 'durchschnitt',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             <img src="../img/ranking.png" width="30" height="30" alt="ranking"></a></td>
+             <td><a href="<?php  
+                 echo $this->url('event', array(
+                     'action' => 'label',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             <img src="../img/label.png" width="30" height="30" alt="ranking"></a></td>      
+ <?php endforeach; ?>
+ </table>

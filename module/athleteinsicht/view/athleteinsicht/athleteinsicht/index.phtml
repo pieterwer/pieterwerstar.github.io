@@ -1,0 +1,115 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Athleten bearbeiten';
+$this->headTitle($title);
+?>
+<h1><u>Athleten bearbeiten</u></h1>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<form action=athlet/registrieren>
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    
+    <tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value=" Neuen Athleten anlegen " style="width: 290px; height: 30px" class="button">
+        
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+
+<table class="table">
+	<tr>
+	    <th>ID</th>
+		<th>Name</th>
+		<th>Vorname</th>
+		<th>Titel</th>
+		<th>Zusatz</th>
+		<th>Geburtstag</th>
+		<th>Geschlecht</th>
+		<th>Telefonnummer1</th>
+		<th>Telefonnummer2</th>
+		<th>Telefonnummer3</th>
+		<th>Fax</th>
+		<th>Email</th>
+		<th>Firma</th>
+		<th>IBAN</th>
+		<th>BIC</th>
+		<th>Historie</th>
+		<th>Umkreis</th>
+		<th>Werbung</th>
+		<th>Status</th>
+        <th>Editieren</th>
+        <th>l&ouml;schen</th>
+        <th>Zuweisung Werbeauftr&auml;ge</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($athleten as $athlet): ?>
+ <tr>
+		
+            
+             <td><?php echo $this->escapeHtml($athlet->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getName()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getVorname()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getTitel()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getZusatz()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getGeburtstag()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getGeschlecht()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getTelefonnummer1()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getTelefonnummer2()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getTelefonnummer3()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getFax()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getEmail()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getFirma()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getIban()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getBic()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getHistorie()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getUmkreis()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getWerbung()); ?></td>
+            <td><?php echo $this->escapeHtml($athlet->getStatus()); ?></td>
+            
+			 <td><a href="<?php  
+                 echo $this->url('athleteinsicht', array(
+                     'action' => 'edit',
+                        'id' => $athlet->getId()
+                   ));
+                 ?>">
+             <img src="img/edit.png" width="30" height="30" ></a></td>
+             
+             <td><a href="<?php  
+                 echo $this->url('athleteinsicht', array(
+                     'action' => 'delete',
+                        'id' => $athlet->getId(),
+                     'email'=>$athlet->getEmail()
+                   ));
+                 ?>">
+             <img src="img/delete.png" width="30" height="30" ></a></td>
+             
+             <td><a href="<?php  
+                 echo $this->url('athleteinsicht', array(
+                     'action' => 'zuordnung',
+                        'id' => $athlet->getId(),
+                     'email'=>$athlet->getEmail()
+                   ));
+                 ?>">
+             <img src="img/list.png" width="30" height="30" ></a></td>
+             
+ <?php endforeach; ?>
+ </table>

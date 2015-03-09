@@ -1,0 +1,37 @@
+<?php
+$title = 'Neues Passwort beantragen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php 
+if ($this->flashMessenger()->hasMessages())
+{
+    echo '<div class="alert alert-info">';
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) { echo $message; }
+    echo '</div>';
+}
+?>
+</b>
+
+<hr width=“15“ size=“1“ noshade=“noshade“ align=“left“ />
+
+<?php
+$form = $this->form;
+$url = $this->url('pwvergessen', array('action' => 'index'));
+$form->setAttribute('action', $url);
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo "Geben Sie hier Ihre Email-Adresse ein, mit der sie sich bei Starmina registriert haben.<br>";
+echo "<b>Achtung: Wenn Sie unten auf den Button klicken, k&oumlnnen Sie sich nicht mehr mit Ihrem alten Passwort anmelden!</b><br><br>";
+echo $this->formRow($form->get('email'));?><br><br>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+</div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<br>
+<a href="<?php echo $this->url('home');?>">Zur&uumlck</a>

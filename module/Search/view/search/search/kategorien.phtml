@@ -1,0 +1,66 @@
+<?php
+$title = 'Suchergebnisse';
+$this->headTitle($title);
+?>
+<?php 
+$form = $this->form;
+$form->setAttribute('action', $this->url('search', array(
+    'action' => 'kategorien'
+)));
+$form->get('submit')->setAttribute('value', 'Suchen');
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('name'));
+echo $this->formRow($form->get('postleitzahl'));
+echo $this->formRow($form->get('umkreis'));
+echo $this->formRow($form->get('kategorien'));
+echo $this->formRow($form->get('sportarten'));
+?>
+ <?php echo $this->formInput($form->get('submit')); ?>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Ort</th>
+		<th>PLZ</th>
+		<th>Datum</th>
+		<th>Gebuehr</th>
+		<th>&nbsp;</th>
+	</tr>
+ <?php if($events)
+foreach ($events as $event): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('event', array(
+        'action' => 'show',
+        'id' => $event->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($event->getName()); ?></a></td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+		<td><?php echo $this->escapeHtml($event->getPostleitzahl()); ?></td>
+		<td><?php echo $this->escapeHtml(DateTime::createFromFormat('Y-m-d H:i:s', $event->getDatum())->format('Y-m-d H:i')); ?></td>
+		<td><?php echo $this->escapeHtml($event->getAnmeldegebuehr()); ?> &#8364;</td>
+                 <td><a href="<?php  
+                 echo $this->url('ergebnis', array(
+                     'action' => 'ergebnis',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             Ergebnisse</a></td>    
+                 <td><a href="<?php  
+                 echo $this->url('bewertung', array(
+                     'action' => 'durchschnitt',
+                        'id' => $event->getId()
+                   ));
+                 ?>">
+             Bewertungen</a></td>      
+ <?php endforeach; ?>
+ </table>

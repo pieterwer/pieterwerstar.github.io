@@ -1,0 +1,25 @@
+<?php
+$title = 'Login';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <form action="login" >
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">Email-Adresse:</td>
+      <td><input name="email" type="text" size="30" maxlength="30"></td>
+    </tr>
+     <tr>
+      <td align="right">Passwort:</td>
+      <td><input name="passwort" type="password" size="30" maxlength="30"></td>
+    </tr>
+      <td align="right">Formular:</td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden">
+    </tr>
+  </table>
+</form>
+  
+ 
+  

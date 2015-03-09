@@ -1,0 +1,25 @@
+<?php
+$title = 'Cashback-Aktion - Status bearbeiten';
+$this->headTitle($title);
+?>
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<hr width=“15“ size=“1“ noshade=“noshade“ align=“left“ />
+<b><p>Multiplikator-ID: <?php echo $cashbackmultiplikator->getId();?></p>
+<p>Event-ID: <?php echo $cashbackmultiplikator->getEventId();?></p></b>
+<hr width=“15“ size=“1“ noshade=“noshade“ align=“left“ />
+<?php
+$form = $this->form;
+$url = $this->url('cashbackmultiplikator', array('action' => 'edit', 'id' => $id));
+$form->setAttribute('action', $url);
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('freigegeben'));?><br><br>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+</div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<br>
+<a href="<?php echo $this->url('cashbackmultiplikator', array('action' => 'index'));?>">Zur&uumlck zur &Uumlbersicht</a>

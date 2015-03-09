@@ -1,0 +1,87 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Artikelansicht';
+$this->headTitle($title);
+use Zend\Form\Element;
+
+$element = new Element\Image('my-image');
+$element->setAttribute('src', 'bild/PNG_transparency_demonstration_1.png');
+$test = dirname(__DIR__);
+?>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('shop', array(
+    'action' => 'add'
+));
+?>">Neuen Artikel hinzufuegen</a>
+	<a
+		href="<?php
+
+echo $this->url('shop', array(
+    'action' => 'ansichtwarenkorb'
+));
+?>">Warenkorb ansehen</a>
+	<a
+		href="<?php
+
+echo $this->url('shop', array(
+    'action' => 'bestellungen'
+));
+?>">Bestellungen ansehen</a>
+</p>
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Artikelname</th>
+		<th>Artikelpreis</th>
+		<th>Artikelbildid</th>
+		<th>Bild</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <tr>
+		    <td><?php echo $this->escapeHtml($shop->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($shop->getArtikelname()); ?></td>
+            <td><?php echo $this->escapeHtml($shop->getArtikelpreis()); ?></td>
+            <td><?php echo $this->escapeHtml($shop->getArtikelbildid()); ?></td>
+            <td><img src="img/<?= $bild->getLink3($shop->getArtikelbildid())?>" width="100" height="100" alt="<?= $shop->getArtikelname()?>"/></td>
+                 <td>
+                 <?php 
+                        $form = $this->form;
+                        $form->setAttribute('action', $this->url('shop', array(
+                            'action' => 'warenkorb', 'id' =>  $shop->getId()
+                        )));
+                        $form->get('submit')->setAttribute('value', 'Shop');
+                        $form->prepare();
+                        
+                        echo $this->form()->openTag($form);
+                        
+                        echo $this->formRow($form->get('menge'));
+                        echo $this->formHidden($form->get('id'));
+                        ?>
+                        <div>
+                         <?php echo $this->formInput($form->get('submit')); ?>
+                         </div>
+                        <?php
+                        echo $this->form()->closeTag($form);
+                        ?>
+                 </td>
+ </table>

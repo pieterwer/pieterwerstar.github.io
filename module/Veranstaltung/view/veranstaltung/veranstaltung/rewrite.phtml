@@ -1,0 +1,25 @@
+<?php
+$title = 'Veranstaltung überarbeiten';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$url = $this->url('veranstaltung', array(
+    'action' => 'rewrite',
+    'id' => $id
+));
+$form->setAttribute('action', $url);
+$form->get('submit')->setAttribute('value', 'Event anlegen');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('name'));
+?>
+<div style="margin-top: 25px;margin-bottom: 25px;">
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);

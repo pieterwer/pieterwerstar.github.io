@@ -1,0 +1,107 @@
+<html>
+
+<body>
+<?php 
+
+
+
+require ("fpdf/fpdf.php");
+
+
+class MyPDF extends FPDF{
+    
+    function Header(){
+        
+        $date = date("Y-m-d H:i:s");
+        $this->SetFont("Helvetica","B",16);
+        $this->Cell(0,20,"Zuordnung der Werbeaufträge zu versch. Athleten und Veranstaltern","B",1,"C");
+    }
+    
+    
+    function Footer(){
+        
+        $this->SetY(-20);
+        $this->SetFont("Helvetica","B",8);
+        $this->Cell(0,10,"Seite".$this->PageNo()."/{nb}","T",0,"R");
+    }
+}
+
+$pdf=new MyPDF();
+$pdf->AliasNbPages();
+$pdf->AddPage();
+
+$date = date("Y-m-d H:i:s");
+$anzahl=count($inhalte);
+
+$pdf->SetFont("Helvetica","BU",13);
+$pdf->SetLineWidth(0,4);
+$pdf->SetDrawColor(0,218,255);
+$pdf->SetFillColor(192,192,192);
+$pdf->SetTextColor(26,26,26);
+
+$pdf->SetXY(10,50);
+
+$pdf->Cell(30,10,"AthletId","LR",0,"C",1);
+$pdf->Cell(40,10,"WerbeauftragID","LR",0,"C",1);
+$pdf->Ln();
+
+
+
+$pdf->SetFont("Helvetica","",8);
+for ($i = 0; $i < $anzahl; $i++) {
+    
+    $pdf -> SetY(60);
+    $pdf->Cell(30,10,$inhalte[$i]["Athletid"],"LR",0,"C",1);
+    $pdf->Cell(40,10,$inhalte[$i]["Werbeauftragid"],"LR",0,"C",1);
+    $pdf->Ln();
+}
+
+ 
+$pdf->SetXY(10,115);
+
+
+
+$pdf->SetFont("Helvetica","BU",10);
+$pdf->SetLineWidth(0,4);
+$pdf->SetDrawColor(0,218,255);
+$pdf->SetFillColor(192,192,192);
+$pdf->SetTextColor(26,26,26);
+
+
+
+
+$pdf -> SetY(110);
+$pdf->Cell(30,10,"VeranstalterID","LR",0,"C",1);
+$pdf->Cell(40,10,"WerbeauftragID","LR",0,"C",1);
+$pdf->Ln();   
+
+
+
+$pdf->SetFont("Helvetica","",8);
+
+$anzahl2=count($inhalte2);
+
+for ($i = 0; $i < $anzahl2; $i++) {
+    
+    $pdf->Cell(30,10,$inhalte2[$i]["veranstalterid"],"LR",0,"C",1);
+    $pdf->Cell(40,10,$inhalte2[$i]["werbeauftragid"],"LR",0,"C",1);
+    $pdf->Ln();
+}
+
+//$pdf->Output("Zuordnung_Werbeauftrag".$id.".pdf",'D');
+$pdf->Output("C:\Users\Fabi\Downloads"."Zuordnung_Werbeauftrag".$id.".pdf","F");
+echo "PDF-Datein wurde erfolgreich im Verzeichnis 'Downloads' erstellt!";
+
+?>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('werbeauftrag', array(
+    'action' => 'index'
+));
+?>">&Uumlbersicht</a>
+</p>
+</body>
+
+</html>

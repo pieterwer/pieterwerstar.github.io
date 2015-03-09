@@ -1,0 +1,82 @@
+<?php
+$title = 'Werbeauftrag suchen';
+$this->headTitle($title);
+?>
+<h1><u>Werbeauftrag suchen</u></h1>
+
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('werbeauftrag', array(
+    'action' => 'index'
+));
+?>">Zur&uumlck zur &Uumlbersicht</a>
+</p>
+<form action="search">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    <tr>
+      <td align="right">ID:</td>
+      <td><input name="id" type="text" size="30" maxlength="30"></td>
+    </tr>
+    <tr>
+      <td align="right">Name:</td>
+      <td><input name="name" type="text" size="30" maxlength="30"></td>
+    </tr>
+      <td align="right">Formular:</td>
+      <td>
+        <input type="submit" value=" Absenden" name="absenden" class="button">
+     
+    </tr>
+  </table>
+</form>
+
+<table class="table"  cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr>
+	    <th>ID</th>
+		<th>Name</th>
+		<th>Editieren</th>
+		<th>L&oumlschen</th>
+		<th>Zuordnung:Werbeauftrag-Athlet-Veranstalter</th>
+	</tr>
+	
+	
+ <?php 
+ if($werbeauftrage!=NULL){
+     
+ 
+ foreach ($werbeauftrage as $werbeauftrag): ?>
+ <tr>
+	       <td><?php echo $this->escapeHtml($werbeauftrag->getID()); ?></td>
+            <td><?php echo $this->escapeHtml($werbeauftrag->getName()); ?></td>
+            
+              <td><a href="<?php  
+                 echo $this->url('werbeauftrag', array(
+                     'action' => 'edit',
+                        'id' => $werbeauftrag->getId()
+                   ));
+                 ?>">
+             <img src="C:/xampp/htdocs/SeminarStarmina/public/img/edit.png" width="30" height="30" ></a></td></a></td>
+           <td><a href="<?php  
+                 echo $this->url('werbeauftrag', array(
+                     'action' => 'delete',
+                        'id' => $werbeauftrag->getId()
+                   ));
+                 ?>">
+             <img src="C:/xampp/htdocs/SeminarStarmina/public/img/delete.png" width="30" height="30" ></a></td>
+    		 <td><a href="<?php  
+                 echo $this->url('werbeauftrag', array(
+                     'action' => 'zuordnung',
+                        'id' => $werbeauftrag->getId()
+                   ));
+                 ?>"><img src="C:/xampp/htdocs/SeminarStarmina/public/img/list.png" width="30" height="30" >
+                 
+             </a></td>
+         
+			
+ <?php 
+
+ endforeach;
+ } ?>
+ </table>

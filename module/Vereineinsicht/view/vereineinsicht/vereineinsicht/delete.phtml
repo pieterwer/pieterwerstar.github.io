@@ -1,0 +1,20 @@
+<?php
+$title = 'Verein entfernen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Sind sie sicher dass sie diesen Verein mit der ID:<?php echo $id; ?> entfernen wollen?
+ </p>
+<?php
+$url = $this->url('vereineinsicht', array(
+    'action' => 'delete',
+    'id' => $id
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" class="button"/> <input type="submit"
+			name="del" value="Nein" class="button"/>
+	</div>
+</form>

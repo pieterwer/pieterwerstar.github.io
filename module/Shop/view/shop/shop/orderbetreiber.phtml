@@ -1,0 +1,69 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Bestellungen der einzelnen Veranstalter';
+$this->headTitle($title);
+?>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+$remember = NULL;
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<pre><?php print_r($bestellungen)?></pre>
+ <?php foreach ($bestellungen as $bestellung): ?>
+ <?php if($remember != $bestellung->getVeranstalterid() && $remember != null)
+	{
+	    echo "</table>";
+	}
+ 
+ if($bestellung->getVeranstalterid() != $remember)
+ {?>
+<h2>Veranstalter: <?php echo $this->escapeHtml($bestellung->getVeranstalterid()); ?></h2>
+<table class="table">
+<?php }
+?>
+	<tr>
+		<td>Artikelid</td>
+		<td><?php echo $this->escapeHtml($bestellung->getArtikelid()); ?></td>
+	</tr>
+	<tr>	
+		<td>Status</td>
+		<td><?php echo $this->escapeHtml($bestellung->getStatus()); ?></td>
+	</tr>
+	<tr>	
+		<td>Datum</td>
+		<td><?php echo $this->escapeHtml($bestellung->getDatum()); ?></td>
+	</tr>
+	<tr>	
+		<td>Menge</td>
+		<td><?php echo $this->escapeHtml($bestellung->getMenge()); ?></td>
+	</tr>
+	<tr>	
+		<td>&nbsp;</td>
+		<td></td>
+	</tr>	
+	<?php 
+	
+	$remember = $bestellung->getVeranstalterid();?>
+ <?php endforeach; ?>
+ 
+ <?php echo "</table>";?>
+ 
+  <p>
+	<a
+		href="<?php
+
+echo $this->url('shop', array(
+    'action' => 'index'));
+?>">Zurueck zum Shop</a>
+</p>

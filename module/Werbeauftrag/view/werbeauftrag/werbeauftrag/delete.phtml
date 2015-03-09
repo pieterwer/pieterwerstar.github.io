@@ -1,0 +1,23 @@
+<?php
+$title = 'Werbeauftrag l&oumlschen';
+$this->headTitle($title);
+?>
+<h1>
+	<u> Werbeauftrag l&oumlschen</u>
+</h1>
+
+<p>Sind sie sicher dass sie diesen Werbeauftrag
+   '<?php echo $this->escapeHtml($werbeauftrag->getName()); ?>' wirklich l&ouml;schen wollen?
+ </p>
+<?php
+$url = $this->url('werbeauftrag', array(
+    'action' => 'delete',
+    'id' => $id
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" class="button"/> <input type="submit"
+			name="del" value="Nein" class="button"/>
+	</div>
+</form>

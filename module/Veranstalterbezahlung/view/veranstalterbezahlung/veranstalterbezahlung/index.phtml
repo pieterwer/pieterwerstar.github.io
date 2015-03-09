@@ -1,0 +1,48 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Alle Veranstalterbezahlungen';
+$this->headTitle($title);
+?>
+<h1><u>Liste aller Veranstalterbuchungen</u></h1>
+
+<form action=veranstalterbezahlung/search>
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    
+    <tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value="Nach Zahlungen suchen" style="width: 340px; height: 30px"class="button">
+      </td>
+     </tr>
+  </table>
+</form>
+
+
+<table class="table" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+	<tr>
+		<th>ZahungsID</th>
+		<th>Veranstalter ID</th>
+		<th>Iban</th>
+		<th>Bic</th>
+		<th>Wert</th>
+		<th>Datum</th>
+		<th>Verwendungszweck</th>
+		<th>Verwendungsart</th>
+	</tr>
+ <?php foreach ($veranstalterbezahlungen as $veranstalterbezahlung): ?>
+ <tr>
+		    <td><?php echo $this->escapeHtml($veranstalterbezahlung->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($veranstalterbezahlung->getVeranstalterid()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getIban()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getBic()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getWert()); ?>&#8364;</td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getDatum()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getVerwendungszweck()); ?></td>
+    		<td><?php echo $this->escapeHtml($veranstalterbezahlung->getVerwendungsart()); ?></td>
+      
+             
+
+    
+			
+ <?php endforeach; ?>
+ </table>

@@ -1,0 +1,26 @@
+<?php
+$title = 'Weiterueberweisen Verein: Sicherheitsabfrage';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Sind sie sich sicher dass sie die Buchung mit der ID:
+   '<?php echo $this->escapeHtml($vereinbezahlung->getId()); ?>' an den Empfaenger mit der ID: '<?php echo $this->escapeHtml($vereinbezahlung->getVerwendungszweck()); ?>'weiterueberweisen wollen?
+ </p>
+<?php
+$url = $this->url('vereinbezahlung', array(
+    'action' => 'forward',
+    'id' => $id,
+    'vereinid' => $vereinid,
+    'wert' => $wert,
+    'useid' => $useID
+    
+    
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="submit" name="del" value="Ja" /> <input type="submit"
+			name="del" value="Nein" />
+	</div>
+</form>

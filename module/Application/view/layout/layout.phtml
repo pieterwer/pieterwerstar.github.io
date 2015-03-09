@@ -1,0 +1,201 @@
+<?php echo $this->doctype();?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('STARMINA sports '. $this->translate(''))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+
+    </head>
+    <body>
+        <nav class="navigation" role="navigation">
+            
+            	<div class="logo">
+            		<a href="<?php echo $this->url('home') ?>"><div class="logoimage"></div></a>
+            	</div>
+                <div class="navbar-header">
+                	
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                </div>
+                
+                <div class="collapse navbar-collapse">
+                <div class="container transparent">
+                    <ul class="nav navbar-nav navigation">
+                        <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                        <li><a href="<?php echo $this->url('search') ?>"><?php echo $this->translate('Suchen') ?></a></li>
+						
+					
+						
+						
+			
+			                    <?php
+			                        if($this->layout()->someVar['Rolle'] == 've') {
+			                    ?>
+                        
+                     
+                        
+                        <li class="active"><a href="<?php echo $this->url('shop') ?>/shopve"><?php echo $this->translate('Onlineshop') ?></a></li>
+						<li><a href="<?php echo $this->url('ergebnis') ?>"><?php echo $this->translate('Ergebnis') ?></a></li>
+							<li class="active"><a href="<?php echo $this->url('veranstaltung') ?>"><?php echo $this->translate('Veranstaltung') ?></a></li>
+							<li class="active"><a href="<?php echo $this->url('event') ?>"><?php echo $this->translate('Event') ?></a></li>
+							
+							
+							
+							
+							
+                        
+                     <?php }
+					 if($this->layout()->someVar['Rolle'] == 'SA') {
+                    ?>
+                      
+					   <li class="active"><a href="<?php echo $this->url('gutscheincode') ?>">Gutschein</a></li>
+					   <li class="active"><a href="<?php echo $this->url('shop') ?>"><?php echo $this->translate('Onlineshop') ?></a></li>
+					   <li class="active"><a href="<?php echo $this->url('werbeauftrag') ?>">Werbung</a></li>
+					   <li class="active"><a href="<?php echo $this->url('anfragen') ?>">Anfragen</a></li>
+					     <li class="active"><a href="<?php echo $this->url('bonusbetrag') ?>">Bonusbetrag</a></li>
+						  <li class="active"><a href="<?php echo $this->url('veranstalterbezahlung') ?>">Bezahlung</a></li>
+						 
+						
+						
+						
+						<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Anlegen <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+						<li><a href="<?php echo $this->url('betreiber') ?>"><?php echo $this->translate('Mitarbeiter / Admin') ?></a></li>
+						<li class="divider"></li>
+							 <li><a href="<?php echo $this->url('vereineinsicht') ?>">Verein</a></li>
+							<li class="divider"></li>
+							 <li><a href="<?php echo $this->url('athleteinsicht') ?>">Athlet</a></li>
+							<li class="divider"></li>
+							 <li><a href="<?php echo $this->url('veranstalter', array( 'action' => 'add')) ?>"><?php echo $this->translate('Veranstalter') ?></a></li>
+							
+							<li class="divider"></li>
+							
+						  <li><a href="<?php echo $this->url('veranstaltung') ?>"><?php echo $this->translate('Veranstaltung') ?></a></li>
+							
+						
+						</ul>
+						
+						
+					    <?php }
+						if($this->layout()->someVar['Rolle'] == 'at') {
+                    ?>
+					<li><a href="<?php echo $this->url('athlet', array('action' => 'profil')) ?>"><?php echo $this->translate('Profil') ?></a></li>
+					
+					  <li><a href="<?php echo $this->url('athletenhistorie') ?>"><?php echo $this->translate('Historie') ?></a></li>
+					 
+					 <li><a href="<?php echo $this->url('kinder') ?>"><?php echo $this->translate('Kinder') ?></a></li>
+					 
+					 <li><a href="http://localhost/Forum">Forum</a></li>
+					 
+								  <?php }
+								if($this->layout()->someVar['Rolle'] == 'AD') {
+							?>
+							
+								
+					   <li class="active"><a href="<?php echo $this->url('gutscheincode') ?>">Gutschein</a></li>
+					   <li class="active"><a href="<?php echo $this->url('shop') ?>"><?php echo $this->translate('Be-Onlineshop') ?></a></li>
+					   <li class="active"><a href="<?php echo $this->url('werbeauftrag') ?>">Werbung</a></li>
+					   <li class="active"><a href="<?php echo $this->url('anfragen') ?>">Anfragen verwalten</a></li>
+					     <li class="active"><a href="<?php echo $this->url('bonusbetrag', array ( 'action' => 'edit')) ?>">Bonusbetrag &aumlndern</a></li>
+						 <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Anlegen <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+						<li><a href="<?php echo $this->url('betreiber') ?>"><?php echo $this->translate('Mitarbeiter / Admin') ?></a></li>
+						<li class="divider"></li>
+							 <li><a href="<?php echo $this->url('vereineinsicht') ?>">Verein</a></li>
+							<li class="divider"></li>
+							 <li><a href="<?php echo $this->url('athleteinsicht') ?>">Athlet</a></li>
+							<li class="divider"></li>
+							 <li><a href="<?php echo $this->url('veranstalter', array( 'action' => 'add')) ?>"><?php echo $this->translate('Veranstalter') ?></a></li>
+							
+							<li class="divider"></li>
+							
+						  <li><a href="<?php echo $this->url('veranstaltung') ?>"><?php echo $this->translate('Veranstaltung') ?></a></li>
+						</ul>
+						 <?php }
+						if($this->layout()->someVar['Rolle'] == 'MA') {
+                    ?>
+					<li class="active"><a href="<?php echo $this->url('mitarbeiteransichtveranstalter') ?>"><?php echo $this->translate('Veranstalter') ?></a></li>
+					<li class="active"><a href="<?php echo $this->url('mitarbeiteransichtathlet') ?>"><?php echo $this->translate('Athlet') ?></a></li>
+					<li class="active"><a href="<?php echo $this->url('mitarbeitereventansicht') ?>"><?php echo $this->translate('Event') ?></a></li>
+					<li class="active"><a href="<?php echo $this->url('suche') ?>"><?php echo $this->translate('Athletensuche') ?></a></li>
+								
+                      
+					 <?php }
+						
+						if($this->layout()->someVar['Rolle'] == 'vr') {
+						?>
+						<li><a href="<?php echo $this->url('verein', array('action' => 'profil')) ?>"><?php echo $this->translate('Verein') ?></a></li>
+                   
+						
+                     <?php }
+                     if($this->layout()->someVar['Loginstatus'] == 'LogedIN') {?>
+                     <li class="active"><a href="<?php echo $this->url('login') ?>/logout"><?php echo $this->translate('Logout') ?></a></li>
+                     
+                     
+                     <?php } else {?>
+                     <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registrieren <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+			            <li><a href="<?php echo $this->url('athlet', array('action' => 'registrieren')) ?>"><?php echo $this->translate('Athlet') ?></a></li>
+						<li class="divider"></li>
+			            <li><a href="<?php echo $this->url('verein', array('action' => 'registrieren')) ?>"><?php echo $this->translate('Verein') ?></a></li>
+						<li class="divider"></li>
+						<li><a href="<?php echo $this->url('veranstalter', array( 'action' => 'add')) ?>"><?php echo $this->translate('Veranstalter') ?></a></li>
+						</ul>
+                     <li class="active"><a href="<?php echo $this->url('login') ?>"><?php echo $this->translate('Login') ?></a></li>
+					 <li class="active"><a href="<?php echo $this->url('pwvergessen') ?>"><?php echo $this->translate('Passwort vergessen?') ?></a></li>
+                     
+                     <?php }?>
+                     <li><a href="<?php echo $this->url('Hilfe') ?>/faq"><?php echo $this->translate('FAQ') ?></a></li>
+                    </ul>
+                    </div>
+                </div><!--/.nav-collapse -->
+        
+        </nav>
+        
+        
+        
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <div class="fb-like" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+        
+    </body>
+	 
+     
+</html>
+

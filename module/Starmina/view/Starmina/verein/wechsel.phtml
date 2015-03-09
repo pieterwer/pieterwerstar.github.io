@@ -1,0 +1,60 @@
+ <?php
+	$title = 'Vereinsadminwechsel';
+	$this->headTitle ( $title );
+	?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<!-- Steuerung der Navigation erfolgt über Application/view/layout/layout.phtm -->
+
+<?php
+$form = $this->form;
+$form->setAttribute ( 'action', $this->url ( 'verein', array (
+		'action' => 'wechsel',
+		'id' => $this->id 
+) ) );
+$form->prepare ();
+echo $this->form ()->openTag ( $form );
+?>
+<br />
+<legend>
+	<h4>Bitte geben sie die neue Vereinsadmindaten ein:</h4>
+</legend>
+<br />
+<?php
+echo $this->formHidden ( $form->get ( 'id' ) );
+?>
+
+<div class="searchtitle">Name:</div>
+<?php
+echo $this->formRow($form->get('Vereinsvertreter'));
+?>
+<div class="clear"></div>
+
+
+
+<div class="searchtitle">Admin Email:</div>
+<?php
+echo $this->formRow($form->get('Adminemail'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+<?php
+/*
+ * echo $this->formRow($form->get('pw1_verein'));
+ * ?> <br/>
+ * <?php
+ * echo $this->formRow($form->get('pw2_verein'));
+ */
+?>
+<br />
+
+<?php
+echo $this->formSubmit ( $form->get ( 'wechsel' ) );
+echo $this->form ()->closeTag ();
+?>
+</div>

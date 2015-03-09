@@ -1,0 +1,45 @@
+<?php
+$title = 'Add new Veranstaltung';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('veranstaltung', array(
+    'action' => 'add'
+)));
+$form->get('submit')->setAttribute('value', 'Add');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('name'));
+
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<p>Haben Sie bereits eine aehnliche Veranstaltung erstellt ? </p>
+<p>Dann klicken Sie bitte auf den Button "Vorlage". </p>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('veranstaltung', array(
+    'action' => 'vorgaenger'
+));
+?>">Vorlage auswaehlen</a>
+</p>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'index'
+));
+?>">Uebersicht</a>
+</p>

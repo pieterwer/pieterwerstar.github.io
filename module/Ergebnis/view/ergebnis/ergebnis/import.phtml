@@ -1,0 +1,12 @@
+<?php
+$form = $this->form;
+$form->setAttribute('action',
+                    $this->url('ergebnis', //your route name ...
+                               array('controller'=>'ergebnis', 'action' => 'import')));
+$form->prepare();
+ 
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('fileupload'));
+ 
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

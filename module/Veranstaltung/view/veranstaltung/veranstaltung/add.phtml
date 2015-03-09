@@ -1,0 +1,53 @@
+<img src="../img/1path.png" width="720" height="136" alt="1path" style="margin-left: 200px; margin-top: 30px"></a><?php
+$title = '';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('veranstaltung', array(
+    'action' => 'add'
+)));
+$form->get('submit')->setAttribute('value', 'Anlegen');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+?>
+<div class="searchtitle">Name:</div>
+<?php
+
+echo $this->formRow($form->get('name'));
+
+?>
+<div class="clear"></div>
+
+<br /><br />
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div><br /><br />
+<?php
+echo $this->form()->closeTag($form);
+?>
+<p>Haben Sie bereits eine aehnliche Veranstaltung erstellt ? </p>
+<p>Dann klicken Sie bitte auf den Button "Vorlage". </p>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('veranstaltung', array(
+    'action' => 'vorgaenger'
+));
+?>">Vorg&auml;nger auswählen</a>
+</p>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'index'
+));
+?>">Uebersicht</a><br />
+
+</p>

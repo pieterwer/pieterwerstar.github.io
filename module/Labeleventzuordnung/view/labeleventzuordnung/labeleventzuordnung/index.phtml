@@ -1,0 +1,37 @@
+<?php
+
+$title = 'Label-Event-Zuordnungen';
+$this->headTitle($title);
+?>
+<b>
+<?php 
+if ($this->flashMessenger()->hasMessages())
+{
+    echo '<div class="alert alert-info">';
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) { echo $message; }
+    echo '</div>';
+}
+?>
+</b>
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<p>Hier sehen Sie eine Liste aller Label-Event-Zuordnungen.</p>
+<p>Sie k&oumlnnen Eintr&aumlge l&oumlschen oder den Status einer Zuordnung auf "1" setzen, um eine Zuordnung zu best&aumltigen.</p>
+<table class="table">
+	<tr>
+		<th>Event-ID</th>
+		<th>Label-ID</th>
+		<th>Status</th>
+		<th></th>
+		<th></th>
+	</tr>
+ <?php foreach ($labeleventzuordnungen as $labeleventzuordnung): ?>
+ <tr> 
+        <td><?php echo $this->escapeHtml($labeleventzuordnung->getEventId()); ?></td>
+    	<td><?php echo $this->escapeHtml($labeleventzuordnung->getLabelId()); ?></td>
+   	    <td><?php echo $this->escapeHtml($labeleventzuordnung->getStatus()); ?></td>
+   	    <td><a href="<?php echo $this->url('labeleventzuordnung', array('action' => 'delete', 'eventid' => $labeleventzuordnung->getEventId()));?>">L&oumlschen</a></td>
+   	    <td><a href="<?php echo $this->url('labeleventzuordnung', array('action' => 'editstatus', 'eventid' => $labeleventzuordnung->getEventId(), 'labelid' => $labeleventzuordnung->getLabelId()));?>">Status &aumlndern</a></td>	
+ </tr>
+ <?php endforeach; ?>
+ </table>

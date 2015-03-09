@@ -1,0 +1,59 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+
+?>
+<h1><u>Liste aller Veranstalter</u></h1>
+<p>*Leere Felder bedeuten dieser Wert wurde nicht in der Datenbank eingetragen</p>
+<form action=mitarbeiteransichtveranstalter/search>
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0">
+    
+    <tr>
+      <td align="right"></td>
+      <td>
+        <input type="submit" value="Veranstalter suchen" style="width: 290px; height: 30px" class="button">
+        
+      </td>
+    </tr>
+  </table>
+</form>
+<table class="table" cellpadding="5" cellspacing="0" bgcolor="#E0E0E0" >
+	<tr>
+	    <th>ID</th>
+		<th>Name</th>
+		<th>Vorname</th>
+		<th>Email</th>
+		<th>IBAN</th>
+		<th>BIC</th>
+		<th>Verifiziert</th>
+		<th>Firmenname</th>
+		<th>Strasse</th>
+		<th>Hausnummer</th>
+		<th>Postleitzahl</th>
+		<th>Ort</th>
+		
+	
+		
+		
+	</tr>
+ <?php foreach ($Mitarbeiteransichtveranstalter as $Mitarbeiteransichtveranstalter): ?>
+ <tr>
+	        <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getName()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getVorname()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getEmail()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getIban()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getBic()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getVerifiziert()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getFirmenname()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getStrasse()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getHausnummer()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getPostleitzahl()); ?></td>
+            <td><?php echo $this->escapeHtml($Mitarbeiteransichtveranstalter->getOrt()); ?></td>
+         
+            
+    		
+         
+			
+ <?php endforeach; ?>
+ 
+ </table>

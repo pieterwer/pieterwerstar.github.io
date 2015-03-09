@@ -1,0 +1,74 @@
+<?php
+$title = 'Onlineshop';
+$this->headTitle($title);
+use Zend\Form\Element;
+
+$element = new Element\Image('my-image');
+$element->setAttribute('src', 'bild/PNG_transparency_demonstration_1.png');
+$test = dirname(__DIR__);
+?>
+<?php 
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('shop', array(
+    'action' => 'ansichtwarenkorb'
+));
+?>"><img src="../img/warenkorb.png" width="30" height="30" alt="warenkorb" style="margin-right: 7px;">Warenkorb ansehen</a>
+	<a
+		href="<?php
+
+echo $this->url('shop', array(
+    'action' => 'bestellungen'
+));
+?>"><img src="../img/list.png" width="30" height="30" alt="list" style="margin-right: 7px;">Bestellungen ansehen</a>
+</p>
+
+ <?php foreach ($shops as $shop): ?>
+ 
+<div style="float:left; margin-right:100px; margin-bottom:100px; text-align: center;" class="shopelement">
+            <img src="img/<?= $bild->getLinkV($shop->getArtikelbildid())?>" width="250" height="250" alt="<?= $shop->getArtikelname()?>"/>   
+            <a href="<?php  
+                 echo $this->url('shop', array(
+                     'action' => 'show',
+                        'id' => $shop->getId())); ?>">
+             </a><br />
+                             <b><?php echo $this->escapeHtml($shop->getArtikelname()); ?></b><br/>
+            <?php echo $this->escapeHtml($shop->getArtikelpreis()); ?>€
+                 <?php 
+                        $form = $this->form;
+                        $form->setAttribute('action', $this->url('shop', array(
+                            'action' => 'warenkorb', 'id' =>  $shop->getId()
+                        )));
+                        $form->get('submit')->setAttribute('value', 'In den Warenkorb');
+                        $form->prepare();
+                        
+                        echo $this->form()->openTag($form);
+                        
+                        echo $this->formRow($form->get('menge'));
+                        echo $this->formHidden($form->get('id'));
+                        ?>
+                        <div>
+                         <?php echo $this->formInput($form->get('submit')); ?>
+                         </div>
+                        <?php
+                        echo $this->form()->closeTag($form);
+                        ?>
+ </div>                
+ <?php endforeach; ?>
+ 

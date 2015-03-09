@@ -1,0 +1,70 @@
+<?php
+$title = 'Ergebnisse zum ausgewählten Event';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<table class="table">
+	<tr>
+		<td>Name</td>
+		<td><?php echo $this->escapeHtml($event->getName()); ?></td>
+    </tr>
+    <tr>         
+		<td>Ort</td>
+		<td><?php echo $this->escapeHtml($event->getOrt()); ?></td>
+	</tr>	
+	<tr>	
+		<td>PLZ</td>
+		<td><?php echo $this->escapeHtml($event->getPostleitzahl()); ?></td>
+	</tr>
+	<tr>
+		<td>Strasse</td>
+		<td><?php echo $this->escapeHtml($event->getStrasse()); ?></td>
+	</tr>
+ </table>
+ 
+ <?php 
+$form = $this->form;
+$form->setAttribute('action', $this->url('ergebnis', array(
+    'action' => 'teilnehmer', 'id' => $event->getId()
+)));
+$form->get('submit')->setAttribute('value', 'Ergebnis');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+echo $this->formRow($form->get('srt'));
+echo $this->formHidden($form->get('eventid'));
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+ 
+<table class="table">
+	<tr>
+		<th>Athlet-ID</th>
+		<th>Alter</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <tr>
+ <?php foreach ($ergebnisse as $ergebnis): ?>
+ <tr>
+		
+            <td><?php echo $this->escapeHtml($ergebnis->getAthletid()); ?></td>
+    		<td><?php echo $this->escapeHtml($ergebnis->getAlter()); ?></td>
+    		
+ <?php endforeach; ?>
+ </table>
+ <p>
+	<a
+		href="<?php
+
+echo $this->url('event', array(
+    'action' => 'show' , 'id' => $event->getId()
+));
+?>">Zurück zum Event-Profil</a>
+</p>

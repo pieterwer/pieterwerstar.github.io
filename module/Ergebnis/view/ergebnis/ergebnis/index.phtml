@@ -1,0 +1,39 @@
+<?php
+$title = 'Meine Ergebnisse';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>
+	<a
+		href="<?php
+
+echo $this->url('ergebnis', array(
+    'action' => 'import'
+));
+?>">Ergebnisliste hinzufügen</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>Event</th>
+		<th>Athlet</th>
+		<th>Zeit</th>
+		<th>Gesamtplatzierung</th>
+		<th>Alter</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($ergebnisse as $ergebnis): 
+ $x = $athlet->getAthlet($ergebnis->getAthletid());
+ $y = $event->getEvent($ergebnis->getEventId());
+ ?>
+ <tr>
+		<td><?php echo $this->escapeHtml($y->getName()); ?></td>
+            <td><?php echo $this->escapeHtml($x->Name); ?> <?php echo $this->escapeHtml($x->Vorname); ?></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getZeit()); ?></td>
+            <td><?php echo $this->escapeHtml($ergebnis->getGesamtplatzierung()); ?></td>
+    		<td><?php echo $this->escapeHtml($ergebnis->getAlter()); ?></td>
+    		
+ <?php endforeach; ?>
+ </table>

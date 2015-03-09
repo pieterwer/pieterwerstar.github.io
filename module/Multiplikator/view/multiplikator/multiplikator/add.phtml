@@ -1,0 +1,27 @@
+<?php
+$title = 'Neue Cashback-Aktion hinzufügen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php echo "Beispiel für Format bei Beginn und Zeit: 2015-03-01 00:00";?><br/><br/><br/>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('multiplikator', array(
+    'action' => 'add',
+    'id' => $id
+    )));
+$form->get('submit')->setAttribute('value', 'Hinzufügen');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('anfang'));
+echo $this->formRow($form->get('ende'));
+echo $this->formRow($form->get('wert'));
+?>
+<div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>

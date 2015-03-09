@@ -1,0 +1,60 @@
+ <?php
+ $title = 'Athleten-Profilübersicht';
+ $this->headTitle($title);
+ ?>
+ 
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+  <p>
+     <a href="<?php echo $this->url('event', array('action'=>'aktuell'));?>">verfügbare Events</a>
+ </p>
+ 
+   <p>
+     <a href="<?php echo $this->url('ergebnis', array('action'=>'athletenergebnis'));?>">gemeldete Events</a>
+ </p>
+ 
+    <p>
+     <a href="<?php echo $this->url('athletenbezahlung', array('action'=>'kontenbewegung'));?>">Kontenbewegungen</a>
+ </p>
+ <p>
+ <a href="<?php echo $this->url('athleteinsicht',
+             array('action'=>'athletedit', 'id' => $athlet->id));?>">Daten bearbeiten</a>
+  </p>           
+ <p>            
+ <a href="<?php echo $this->url('athlet',
+             array('action'=>'editanschrift', 'id' => $athlet->id));?>">Anschrift bearbeiten</a>
+</p>
+ 
+<!-- Steuerung der Navigation erfolgt über Application/view/layout/layout.phtm --> 
+ <table class="table">
+ <tr>
+     <th>Name</th>
+     <th>Vorname</th>
+     <th>Titel</th>
+     <th>Zusatz</th>
+     <th>Geburtstag</th>
+     <th>Bild</th>
+     <th>&nbsp;</th>
+ </tr>
+ <tr>
+     <td><?php echo $this->escapeHtml($athlet->Name);?></td>
+     <td><?php echo $this->escapeHtml($athlet->Vorname);?></td>
+     <td><?php echo $this->escapeHtml($athlet->Titel);?></td>
+     <td><?php echo $this->escapeHtml($athlet->Zusatz);?></td>
+     <td><?php echo $this->escapeHtml($athlet->Geburstag);?></td>
+     <td><?php //echo $this->escapeHtml($bild->/*'<img src="/uploads/'.$bild->name.'"/>');*/link_athlet/*bild_athlet['name']*/);?></td>
+    
+     <td>
+                  <a href="<?php echo $this->url('athlet',
+             array('action'=>'delete', 'id' => $athlet->id));?>">Löschen</a>
+     </td>
+ </tr>
+ </table>
+ 
+ <p> Ihr aktuelles Guthaben beträgt:<?php echo $this->escapeHtml($athletenguthaben->Kontostand);?>€ </p>
+  <p>
+     <a href="<?php echo $this->url('gutscheincode', array('action'=>'athleteinloesen','id' =>$athlet->id));?>">Guthabenkonto mit Gutscheinen aufladen</a>
+ </p>
+<?php
+
+?>

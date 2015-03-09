@@ -1,0 +1,31 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'Verfügbare Veranstaltungen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<table class="table">
+	<tr>
+		<th>Name:</th>
+	</tr>
+ <?php foreach ($veranstaltungen as $veranstaltung): ?>
+ <tr>
+		<td><a
+			href="<?php
+    
+echo $this->url('veranstaltung', array(
+        'action' => 'athletshow',
+        'id' => $veranstaltung->getId()
+    ));
+    ?>">
+             <?php echo $this->escapeHtml($veranstaltung->getName()); ?></a></td>
+	<td><a href="<?php  
+                 echo $this->url('veranstaltung', array(
+                     'action' => 'hist',
+                        'id' => $veranstaltung->getId()
+                   ));
+                 ?>">
+    	
+ <?php endforeach; ?>
+ </table>

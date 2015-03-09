@@ -1,0 +1,67 @@
+
+ <?php
+
+ $title = 'Daten bearbeiten: ';
+ $this->headTitle($title);
+ ?>
+ 
+ <h3><?php echo $this->escapeHtml($title); ?></h3>
+ <?php
+ $form = $this->form;
+ $form->setAttribute('action', $this->url(
+     'athlet',
+     array(
+         'action' => 'editanschrift',
+         'id'     => $this->id,
+     )
+ ));
+ $form->prepare();
+ echo $this->form()->openTag($form);
+ ?>
+ 
+ <br/><legend><h4>Gegebenenfalls Felder ändern:<h4></legend><br/>
+
+ <div>
+ <?php
+ echo $this->formHidden($form->get('id'));
+ ?> <br/>
+
+ <div>
+ <?php
+ echo $this->formRow($form->get('Strasse'));
+ ?> <br/>
+ <?php
+ echo $this->formRow($form->get('Hausnummer'));
+ ?> <br/>
+ <?php
+ echo $this->formRow($form->get('Postleitzahl'));
+ ?> <br/>
+ <?php
+ echo $this->formRow($form->get('Ort'));
+ ?> <br/>
+ <?php
+ echo $this->formRow($form->get('Land'));
+ ?> <br/>
+ </div>
+ <br/>
+ 
+ 
+
+ 
+ <?php
+ echo $this->formSubmit($form->get('areg'));
+ echo $this->form()->closeTag();
+ ?>
+ 
+ <!-- ab hier relevant für Zurücksetz-Button (PR, 13.12.14) -->
+ <?php
+ $form->setAttribute('action', $this->url('athlet', array('action' => 'aregreset')));
+ $form->prepare();
+ echo $this->form()->openTag($form);
+ ?>
+ <br/>
+ <?php
+ echo $this->formSubmit($form->get('aregreset'));
+ echo $this->form()->closeTag();
+ ?>
+ 

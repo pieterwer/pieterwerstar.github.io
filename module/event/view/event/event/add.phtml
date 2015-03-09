@@ -1,0 +1,247 @@
+<img src="../../img/2path.png" width="720" height="136" alt="2path" style="margin-left: 200px; margin-top: 30px"></a><?php
+
+$title = '';
+$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php 
+
+if ($this->flashMessenger()->hasMessages()) {
+
+    echo '<div class="alert alert-info">';
+
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+}
+
+?>
+<?php
+
+$form = $this->form;
+$form->setAttribute('action', $this->url('event', array(
+    'action' => 'add', 'id' => $verid
+)));
+$form->get('submit')->setAttribute('value', 'Event anlegen');
+$form->prepare();
+
+?><div style="float:left;"><?php
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));?><br /><?php
+echo $this->formHidden($form->get('veranstaltungsid'));?><br />
+
+
+<div class="searchtitle">Name:</div>
+<?php
+echo $this->formRow($form->get('name'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+<div class="searchtitle">PLZ:</div>
+<?php
+echo $this->formRow($form->get('postleitzahl'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+<div class="searchtitle">Ort:</div>
+<?php
+echo $this->formRow($form->get('ort'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+<div class="searchtitle">Strasse:</div>
+<?php
+echo $this->formRow($form->get('strasse'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+<div class="searchtitle">Hausnummer:</div>
+<?php
+echo $this->formRow($form->get('hausnummer'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+<div class="searchtitle">Gebühr:</div>
+<?php
+echo $this->formRow($form->get('anmeldegebuehr'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+<div class="searchtitle">Datum:</div>
+<?php
+echo $this->formRow($form->get('Date'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+<div class="searchtitle">Uhrzeit:</div>
+<?php
+echo $this->formRow($form->get('Time'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+<div class="searchtitle">Beschränkung:</div>
+<?php
+echo $this->formRow($form->get('geschlechtsbeschraenkung'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+<div class="searchtitle">Beschränkung:</div>
+<?php
+echo $this->formRow($form->get('meisterschaftsbeschraenkung'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+<div class="searchtitle">Sportart:</div>
+<?php
+echo $this->formRow($form->get('sportart'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+<div class="searchtitle">Teilnehmer:</div>
+<?php
+echo $this->formRow($form->get('teilnehmerlimit'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+<div class="searchtitle">Kategorien:</div>
+<?php
+echo $this->formRow($form->get('kategorien'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+<div class="searchtitle">Altersminimum:</div>
+<?php
+echo $this->formRow($form->get('altersminimum'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+
+
+<div class="searchtitle">Altersmaximum:</div>
+<?php
+echo $this->formRow($form->get('altersmaximum'));
+?>
+<div class="clear"></div>
+
+<div class="searchtitle">Beschreibung:</div>
+<?php
+echo $this->formRow($form->get('beschreibung'));
+?>
+<div class="clear"></div>
+
+<?php
+
+
+
+
+
+?>
+<div style="margin-top: 25px;margin-bottom: 25px;">
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('veranstaltung', array(
+    'action' => 'show', 'id'=> $verid
+));
+?>">Uebersicht</a>
+</p>
+

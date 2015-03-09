@@ -1,0 +1,21 @@
+<?php
+$title = 'Uebersicht aller beantragter Labels';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<table class="table">
+	<tr>
+		<th>EventID</th>
+		<th>LabelID</th>
+		<th>Status</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($labeleventzuordnungen as $labeleventzuordnung): ?>
+ <tr>
+            <td><?php echo $this->escapeHtml($labeleventzuordnung->getEventID()); ?></td>
+            <td><?php echo $this->escapeHtml($labeleventzuordnung->getLabelID()); ?></td>
+            <td><?php echo $this->escapeHtml($labeleventzuordnung->getStatus()); ?></td>
+ <?php endforeach; ?>
+ </table>

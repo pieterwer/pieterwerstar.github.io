@@ -1,0 +1,39 @@
+<?php
+$title = 'Bonus-Cent-Betrag bearbeiten';
+$this->headTitle($title);
+?>
+<b>
+<?php 
+if ($this->flashMessenger()->hasMessages())
+{
+    echo '<div class="alert alert-info">';
+    $messages = $this->flashMessenger()->getMessages();
+    foreach($messages as $message) { echo $message; }
+    echo '</div>';
+}
+?>
+</b>
+<h1><u><?php echo $this->escapeHtml($title); ?></u></h1>
+<p>Hier sehen Sie eine Liste aller Cash-Back-Aktionen.</p>
+<p>Sie k&oumlnnen den Bonus-Cent-Betrag f&uumlr jede Cash-Back-Aktion &aumlndern!</p>
+<table class="table">
+	<tr>
+		<th>Multiplikator-ID</th>
+		<th>Event-ID</th>
+		<th>Anfang</th>
+		<th>Ende</th>
+		<th>Bonus-Cent-Betrag</th>
+		<th>Freigegeben</th>
+		<th></th>
+	</tr>
+ <?php foreach ($bonusbetrags as $bonusbetrag): ?>
+ <tr> 
+        <td><?php echo $this->escapeHtml($bonusbetrag->getId()); ?></td>
+        <td><?php echo $this->escapeHtml($bonusbetrag->getEventId()); ?></td>
+    	<td><?php echo $this->escapeHtml($bonusbetrag->getAnfang()); ?></td>
+   	    <td><?php echo $this->escapeHtml($bonusbetrag->getEnde()); ?></td>
+   		<td><?php echo $this->escapeHtml($bonusbetrag->getWert()); ?></td>
+   	    <td><?php echo $this->escapeHtml($bonusbetrag->getFreigegeben()); ?></td>
+   	    <td><a href="<?php echo $this->url('bonusbetrag', array('action' => 'edit', 'id' => $bonusbetrag->getId()));?>">Bonus-Cent-Betrag &aumlndern</a></td>	
+ <?php endforeach; ?>
+ </table>

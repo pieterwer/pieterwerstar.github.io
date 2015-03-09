@@ -1,0 +1,27 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'My Bewertung list';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Athletid</th>
+		<th>Likert</th>
+		<th>EventID</th>
+		<th>Text</th>
+		<th>&nbsp;</th>
+		<th></th>
+	</tr>
+ <?php foreach ($bewertungen as $bewertung): ?>
+ <tr>
+		    <td><?php echo $this->escapeHtml($bewertung->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($bewertung->getAthletid()); ?></td>
+    		<td><?php echo $this->escapeHtml($bewertung->getLikert()); ?></td>
+    		<td><?php echo $this->escapeHtml($bewertung->getEventid()); ?></td>
+    		<td><?php echo $this->escapeHtml($bewertung->getText()); ?></td>
+    		
+ <?php endforeach; ?>
+ </table>

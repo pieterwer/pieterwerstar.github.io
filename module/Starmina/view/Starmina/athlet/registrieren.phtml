@@ -1,0 +1,312 @@
+<?php
+$title = 'Als Athlet registrieren';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+ <?php
+ $form->setAttribute('action', $this->url('athlet', array('action' => 'registrieren')));
+ $form->prepare();
+ echo $this->form()->openTag($form);
+ ?>
+ 
+
+
+ <div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <?php
+ echo $this->formHidden($form->get('id'));
+ echo $this->formHidden($form->get('Kontostand'));
+ echo $this->formHidden($form->get('Rolle'));
+ echo $this->formRow($form->get('status'));
+ 
+ 
+ ?> <h3>1. Persönliche Daten</h3><hr />
+ <div class="searchtitle">Titel:</div>
+<?php
+echo $this->formRow($form->get('Titel'));
+?>
+<div class="clear"></div>
+ 
+ 
+ <div class="searchtitle">Zusatz:</div>
+<?php
+echo $this->formRow($form->get('Zusatz'));
+?>
+<div class="clear"></div>
+ 
+ 
+ 
+ <div class="searchtitle">Vorname:</div>
+<?php
+echo $this->formRow($form->get('Vorname'));
+?>
+<div class="clear"></div>
+ 
+ 
+ <div class="searchtitle">Nachname:</div>
+<?php
+echo $this->formRow($form->get('Name'));
+?>
+<div class="clear"></div>
+
+
+ <div class="searchtitle">Geschlecht:</div>
+<?php
+echo $this->formRow($form->get('Geschlecht'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">Geburtsdatum:</div>
+<?php
+echo $this->formRow($form->get('Geburtstag'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">Straße:</div>
+<?php
+echo $this->formRow($form->get('Strasse'));
+?>
+<div class="clear"></div>
+
+
+
+
+
+ <div class="searchtitle">Hausnummer:</div>
+<?php
+echo $this->formRow($form->get('Hausnummer'));
+?>
+<div class="clear"></div>
+
+
+ <div class="searchtitle">Postleitzahl:</div>
+<?php
+echo $this->formRow($form->get('Postleitzahl'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">Ort:</div>
+<?php
+echo $this->formRow($form->get('Ort'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">Land:</div>
+<?php
+echo $this->formRow($form->get('Land'));
+?>
+<div class="clear"></div><br />
+
+
+
+ <div class="searchtitle">Telefon 1:</div>
+<?php
+echo $this->formRow($form->get('tel1landauswahl_athlet'));
+ echo $this->formRow($form->get('Telefonnummer1'));
+?>
+<div class="clear"></div>
+
+ <div class="searchtitle">Telefon 2:</div>
+<?php
+echo $this->formRow($form->get('tel2landauswahl_athlet'));
+ echo $this->formRow($form->get('Telefonnummer2'));
+?>
+<div class="clear"></div>
+
+ <div class="searchtitle">Telefon 3:</div>
+<?php
+echo $this->formRow($form->get('tel3landauswahl_athlet'));
+ echo $this->formRow($form->get('Telefonnummer3'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">Fax:</div>
+<?php
+echo $this->formRow($form->get('faxlandauswahl_athlet'));
+ echo $this->formRow($form->get('Fax'));
+?>
+<div class="clear"></div><br/>
+
+
+ <div class="searchtitle">Firma:</div>
+<?php
+echo $this->formRow($form->get('Firma'));
+?>
+<div class="clear"></div><br/>
+
+
+ <div class="searchtitle">Kontoinhaber:</div>
+<?php
+echo $this->formRow($form->get('name_athlet_bkih'));
+?>
+<div class="clear"></div>
+
+
+
+ <div class="searchtitle">IBAN:</div>
+<?php
+echo $this->formRow($form->get('IBAN'));
+?>
+<div class="clear"></div>
+
+
+ <div class="searchtitle">BIC:</div>
+<?php
+echo $this->formRow($form->get('BIC'));
+?>
+<div class="clear"></div>
+
+
+ 
+
+
+
+ 
+<!-- Darstellung in der Form Alex Giedt 16.12-->
+
+  <?php $fileElement = $form->get('image-file'); ?>
+  <?php echo $this->formLabel($fileElement); ?>
+  <?php echo $this->formFile($fileElement); ?>
+  <?php echo $this->formElementErrors($fileElement); ?>
+
+<br/>
+
+
+ <div class="searchtitle">E-Mail:</div>
+<?php
+echo $this->formRow($form->get('Email'));
+?>
+<div class="clear"></div>
+ 
+
+ <div class="searchtitle">Passwort:</div>
+<?php
+echo $this->formRow($form->get('Passwort'));
+?>
+<div class="clear"></div>
+
+
+ <div class="searchtitle">Wiederholen:</div>
+<?php
+echo $this->formRow($form->get('pw2_athlet'));
+?>
+<div class="clear"></div><br/><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h3>2. Motivationsgrund</h3><hr />
+<?php
+echo $this->formRow($form->get('Bezeichnung'));
+?>
+<div class="clear"></div><br/><br/>
+
+
+
+<h3>3. Sportart</h3><hr />
+<?php
+echo $this->formRow($form->get('SportBezeichnung'));
+?>
+<div class="clear"></div><br/><br/>
+
+
+
+
+<h3>4. Verein</h3><hr />
+<?php
+echo $this->formRow($form->get('verein_auswahl'));
+?>
+<div class="clear"></div> <br/><br/>
+
+ 
+
+ <h3>5. Sonstige Angaben</h3><hr />
+ <div class="searchtitle">Werbung:</div>
+<?php
+echo $this->formRow($form->get('Werbung'));
+?>
+<div class="clear"></div>
+ 
+ 
+ 
+
+
+ <div class="searchtitle">Historie:</div>
+<?php
+echo $this->formRow($form->get('Historie'));
+?>
+<div class="clear"></div> 
+ 
+
+ 
+ 
+  <div class="searchtitle">Umkreis:</div>
+<?php
+echo $this->formRow($form->get('Umkreis'));
+?>
+<div class="clear"></div> 
+ 
+ 
+ <br/>
+ </div>
+ <br/>
+ 
+ 
+ <div>
+
+ 
+ 
+ 
+ <?php
+ echo $this->formSubmit($form->get('areg'));
+ echo $this->form()->closeTag();
+ ?>
+ 
+ <!-- ab hier relevant für Zurücksetz-Button (PR, 13.12.14) -->
+ <?php
+ $form->setAttribute('action', $this->url('athlet', array('action' => 'aregreset')));
+ $form->prepare();
+ echo $this->form()->openTag($form);
+ ?>
+ <br/>
+ <?php
+ echo $this->formSubmit($form->get('aregreset'));
+ echo $this->form()->closeTag();
+ ?>

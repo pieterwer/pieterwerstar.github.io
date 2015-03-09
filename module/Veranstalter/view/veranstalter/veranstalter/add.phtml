@@ -1,0 +1,91 @@
+<?php
+$title = 'Als Veranstalter registrieren';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('veranstalter', array(
+    'action' => 'add'
+)));
+$form->get('submit')->setAttribute('value', 'Jetzt registrieren');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+?> 
+<div class="searchtitle">Nachname:</div>
+<?php
+echo $this->formRow($form->get('name'));
+?>
+<div class="clear"></div>
+<div class="searchtitle">Vorname:</div>
+<?php
+
+echo $this->formRow($form->get('vorname'));
+
+?>
+<div class="clear"></div>
+<div class="searchtitle">Email:</div>
+<?php
+echo $this->formRow($form->get('email'));
+?>
+<div class="clear"></div>
+<div class="searchtitle">Passwort:</div>
+<?php
+echo $this->formRow($form->get('passwort'));
+?>
+<div class="clear"></div>
+<div class="searchtitle">Wiederholen:</div>
+<?php
+echo $this->formRow($form->get('passwort2'));
+?>
+<div class="clear" style="height: 10px;"></div>
+<div class="searchtitle">IBAN:</div>
+
+<div class="fleft" style="margin-right: 20px;">
+<?php
+echo $this->formRow($form->get('iban'));
+?>
+</div>
+<div class="searchtitle" style="width: 50px;">BIC:</div>
+<div class="fleft">
+<?php
+echo $this->formRow($form->get('bic'));
+?>
+</div>
+
+<div class="clear" style="height: 10px;"></div>
+<div class="searchtitle">Firma:</div>
+<?php
+echo $this->formRow($form->get('firmenname'));
+?>
+<div class="clear"></div>
+<div class="searchtitle">Straße u. Nr:</div>
+<?php
+echo $this->formRow($form->get('strasse'));
+?>
+<?php
+echo $this->formRow($form->get('hausnummer'));
+?>
+<div class="clear"></div>
+<div class="searchtitle">PLZ, Ort:</div>
+<?php
+echo $this->formRow($form->get('postleitzahl'));
+
+echo $this->formRow($form->get('ort'));
+
+echo $this->formRow($form->get('verifiziert'));
+?>
+
+<div class="clear"></div>
+<div style="margin-top: 25px;">
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<p>
+
+</p>

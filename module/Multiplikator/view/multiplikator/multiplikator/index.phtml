@@ -1,0 +1,38 @@
+<?php
+use Zend\Filter\DateTimeFormatter;
+$title = 'My veranstalter list';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a
+		href="<?php
+
+echo $this->url('veranstalter', array(
+    'action' => 'add'
+));
+?>">Add new item</a>
+</p>
+
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Anfang</th>
+		<th>Ende</th>
+		<th>Wert</th>
+		<th>Event-ID</th>
+		<th>Freigegeben</th>
+		<th></th>
+	</tr>
+ <?php foreach ($multiplikatoren as $multiplikator): ?>
+ <tr>
+		    <td><?php echo $this->escapeHtml($multiplikator->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($multiplikator->getAnfang()); ?></td>
+    		<td><?php echo $this->escapeHtml($multiplikator->getEnde()); ?></td>
+    		<td><?php echo $this->escapeHtml($multiplikator->getWert()); ?></td>
+    		<td><?php echo $this->escapeHtml($multiplikator->getEventid()); ?></td>
+    		<td><?php echo $this->escapeHtml($multiplikator->getFreigegeben()); ?></td>
+			
+ <?php endforeach; ?>
+ </table>

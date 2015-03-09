@@ -1,0 +1,127 @@
+ <?php
+	$title = 'Benutzerdaten bearbeiten';
+	$this->headTitle ( $title );
+	?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute ( 'action', $this->url ( 'verein', array (
+		'action' => 'edit',
+		'id' => $this->id 
+) ) );
+$form->prepare ();
+echo $this->form ()->openTag ( $form );
+?>
+
+<br />
+<legend>
+	
+		Gegebenenfalls Felder ändern
+		
+
+</legend>
+<br />
+
+<div>
+ <?php
+	echo $this->formHidden ( $form->get ( 'id' ) );
+	echo $this->formHidden ( $form->get ( 'Name' ) );
+
+	?>
+    
+    
+    
+    <div class="searchtitle">Strasse:</div>
+<?php
+echo $this->formRow($form->get('Strasse'));
+?>
+<div class="clear"></div>
+    
+    
+     <div class="searchtitle">Hausnummer:</div>
+<?php
+echo $this->formRow($form->get('Hausnummer'));
+?>
+<div class="clear"></div>   
+    
+        <div class="searchtitle">Postleitzahl:</div>
+<?php
+echo $this->formRow($form->get('Postleitzahl'));
+?>
+<div class="clear"></div>   
+
+
+
+        <div class="searchtitle">Ort:</div>
+<?php
+echo $this->formRow($form->get('Ort'));
+?>
+<div class="clear"></div>  
+
+
+
+
+        <div class="searchtitle">Kontoinhaber:</div>
+<?php
+echo $this->formRow($form->get('Bankkontoinhaber'));
+?>
+<div class="clear"></div>  
+
+
+        <div class="searchtitle">Name:</div>
+<?php
+echo $this->formRow($form->get('Vereinsvertreter'));
+?>
+<div class="clear"></div>  
+
+
+        <div class="searchtitle">IBAN:</div>
+<?php
+echo $this->formRow($form->get('IBAN'));
+?>
+<div class="clear"></div>  
+
+
+        <div class="searchtitle">BIC:</div>
+<?php
+echo $this->formRow($form->get('BIC'));
+?>
+<div class="clear"></div> 
+
+
+        <div class="searchtitle">EMail:</div>
+<?php
+echo $this->formRow($form->get('Email'));
+?>
+<div class="clear"></div> 
+
+
+	        <div class="searchtitle">Admin EMail:</div>
+<?php
+echo $this->formRow($form->get('Adminemail'));
+?>
+<div class="clear"></div> 
+
+ 
+
+
+ 
+ <?php
+	echo $this->formSubmit ( $form->get ( 'vreg' ) );
+	echo $this->form ()->closeTag ();
+	?>
+ 
+ <!-- ab hier relevant für Zurücksetz-Button (PR, 13.12.14) -->
+ <?php
+	// $form->setAttribute('action', $this->url('verein', array('action' => 'vregreset')));
+	// $form->prepare();
+	// echo $this->form()->openTag($form);
+	// Nach dem zur�cksetzen wird komplette regform gezeigt, nicht nur die gew�nschten Benutzerdaten
+	?>
+ <br />
+ <?php
+	// echo $this->formSubmit($form->get('vregreset'));
+	// echo $this->form()->closeTag();
+	?>
+<!-- Steuerung der Navigation erfolgt über Application/view/layout/layout.phtm -->
