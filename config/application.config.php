@@ -4,7 +4,7 @@ return array(
     'modules' => array(
         'Application', 'Betreiber',  'Werbeauftrag', 'Starmina', 'Multiplikator', 'Anfragen', 'Labeleventzuordnung', 
 		'Bewertung', 'Bild', 'Ergebnis', 'Event', 'Gutscheincode', 'pwvergessen', 'Veranstalterverifizieren','Kinder', 'Search', 'Shop', 'Strecke', 'Veranstalter', 'Veranstalterbezahlung', 'Veranstaltung', 'Starmina',  'Admin', 'Cashbackmultiplikator', 'Bonusbetrag',
-		'Athleteinsicht', 'Hilfe','Suche',
+		'Athleteinsicht', 'Hilfe',
         'Login','Werbeauftrag','Vereinsadminaendern','Vereinbezahlung','Athletenbezahlung','Athletenhistorie', 'SanAuth', 'Lizenz', 'Mitarbeiteransichtveranstalter' , 'Mitarbeiteransichtathlet', 'Vereineinsicht', 'Mitarbeitereventansicht'
     ),
 
