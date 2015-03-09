@@ -4,8 +4,8 @@ return array(
     'modules' => array(
         'Application', 'Betreiber',  'Werbeauftrag', 'Starmina', 'Multiplikator', 'Anfragen', 'Labeleventzuordnung', 
 		'Bewertung', 'Bild', 'Ergebnis', 'Event', 'Gutscheincode', 'pwvergessen', 'Veranstalterverifizieren','Kinder', 'Search', 'Shop', 'Strecke', 'Veranstalter', 'Veranstalterbezahlung', 'Veranstaltung', 'Starmina',  'Admin', 'Cashbackmultiplikator', 'Bonusbetrag',
-		'Athleteinsicht', 'Hilfe',
-        'Login','Werbeauftrag','Vereinsadminaendern','Vereinbezahlung','Athletenbezahlung','Athletenhistorie', 'SanAuth', 'Lizenz', 'Mitarbeiteransichtveranstalter' , 'Mitarbeiteransichtathlet', 'Vereineinsicht', 'Mitarbeitereventansicht'
+		'Athleteinsicht', 'Hilfe','Suche',
+        'Login','Werbeauftrag','Vereinsadminaendern','Vereinbezahlung','Athletenbezahlung','Athletenhistorie', 'SanAuth', 'Lizenz', 'Mitarbeiteransichtveranstalter' , 'Mitarbeiteransichtathlet', 'Vereineinsicht', 'Mitarbeitereventansicht','test'
     ),
 
     // These are various options for the listeners attached to the ModuleManager
@@ -18,7 +18,7 @@ return array(
             './module',
             './vendor','./module','./module','./module','./module','./module','./module','./module','./module', './module', './module','./module','./module',
 			'./module','./module','./module','./module','./module', './module','./module','./module','./module','./module','./module','./module','./module','./module', './module', './module',
-			'./module'
+			'./module','./module'
             
         ),
 
