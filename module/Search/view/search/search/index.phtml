@@ -1,8 +1,23 @@
 <?php
-$title = 'Suchergebnisse';
+$title = 'Eventsuche';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+<td>
+<a href="<?php  
+                 echo $this->url('search', array(
+                     'action' => 'erweitert'
+                   ));
+                 ?>">
+             Erweiterte Eventsuche </a></td> 
+             <td>
+<a href="<?php  
+                 echo $this->url('search', array(
+                     'action' => 'veranstaltung'
+                   ));
+                 ?>">
+             Veranstaltungssuche </a></td>
+</table> <br/>
 <?php 
 $form = $this->form;
 $form->setAttribute('action', $this->url('search', array(
@@ -17,23 +32,15 @@ echo $this->formRow($form->get('name'));
 <?php
 echo $this->form()->closeTag($form);
 ?><br />
+
+<?php if($events){?>
+
+<?php if($events->count()==0){?>
+    <h3><?php print("Keine Events f&uuml;r ihre Suche gefunden.");?> </h3>
+                <?php  } else {?>
 <table>
 
-<td>
-<a href="<?php  
-                 echo $this->url('search', array(
-                     'action' => 'erweitert'
-                   ));
-                 ?>">
-             Erweiterte Suche </a></td> 
-             <td>
-<a href="<?php  
-                 echo $this->url('search', array(
-                     'action' => 'veranstaltung'
-                   ));
-                 ?>">
-             Veranstaltungssuche </a></td>
-</table> <br/>
+
 
 <table class="table">
 	<tr>
@@ -75,3 +82,4 @@ echo $this->url('event', array(
              Bewertungen</a></td>      
  <?php endforeach; ?>
  </table>
+ <?php }}?>

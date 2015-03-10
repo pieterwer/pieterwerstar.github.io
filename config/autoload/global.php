@@ -12,6 +12,11 @@
  */
 return array(
     'service_manager' => array(
+        'service_manager' => array(
+            'aliases' => array(
+                'translator' => 'MvcTranslator',
+            ),
+        ),
         'factories' => array(
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
             'Zend\Db\Adapter\Adapter' => function ($serviceManager) {

@@ -34,7 +34,7 @@ class SearchController extends AbstractActionController
                 $events = $mapper->searchAll();
             }
         } else {
-            $events = $mapper->searchAll();
+            $events = array();
         }
         return array(
             'form' => $form,
@@ -175,7 +175,7 @@ class SearchController extends AbstractActionController
                 $events = $mapper->searchAllerweitert($where);
             }
         } else {
-            $events = $mapper->searchAll();
+            $events = array();
         }
         
         return array(

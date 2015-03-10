@@ -64,8 +64,8 @@ class SearchForm extends Form
             ),
             'attributes' => array(
                 'id' => 'postleitzahl',
-                'minlength' => 5,
-                'maxlength' => 5,
+                'min' => 10000,
+                'max' => 99999,
             )
         ));
         

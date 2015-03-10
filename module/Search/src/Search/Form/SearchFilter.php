@@ -75,8 +75,11 @@ class SearchFilter extends InputFilter
                     'name' => 'StringLength',
                     'options' => array(
                         'encoding' => 'UTF-8',
-                        'max' => 100
-                    )
+                            'max' => 100,
+                            'messages' => array( 
+                                'stringLengthTooLong' => 'Bitte geben Sie einen Namen mit weniger als 100 Zeichen ein!' 
+                            )
+                        )
                 )
             )
         ));
@@ -89,6 +92,9 @@ class SearchFilter extends InputFilter
                     'options' => array(
                         'table' => 'zipcode',
                         'field' => 'zipcode',
+                        'messages' => array(
+                            'noRecordFound' => 'Bitte geben Sie eine korrekte Postleitzahl ein.',
+                        ),
                         'adapter' => \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::getStaticAdapter()
                     )
                     
