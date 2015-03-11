@@ -25,6 +25,8 @@ class Module
         $myService = $serviceManager->get('AuthService');
         
         $viewModel->someVar = $myService->getStorage()->read();
+        
+        
     }
 
     public function getConfig()
