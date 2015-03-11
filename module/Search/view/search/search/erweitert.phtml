@@ -1,8 +1,24 @@
 <?php
-$title = 'Erweiterte Suche';
+$title = 'Erweiterte Eventsuche';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+<td>
+<a href="<?php  
+                 echo $this->url('search', array(
+                     'action' => 'index'
+                   ));
+                 ?>">
+             Eventsuche</a></td> 
+             <td>
+             
+<a href="<?php  
+                 echo $this->url('search', array(
+                     'action' => 'veranstaltung'
+                   ));
+                 ?>">
+             Veranstaltungssuche</a></td>
+
 <div class="extendedsearch">
 <?php 
 $form = $this->form;
@@ -22,6 +38,11 @@ echo $this->formRow($form->get('sportarten'));
 <?php
 echo $this->form()->closeTag($form);
 ?><br/>
+<?php if($events){?>
+
+<?php if($events->count()==0){?>
+    <h3><?php print("Keine Events f&uuml;r ihre Suche gefunden.");?> </h3>
+                <?php  } else {?>
 <h3>Suchergebnisse</h3>
 
 
@@ -34,7 +55,7 @@ echo $this->form()->closeTag($form);
 		<th class="searchmobile">Gebuehr</th>
 		<th class="searchmobile">&nbsp;</th>
 	</tr>
- <?php if($events)
+ <?php 
 foreach ($events as $event): ?>
  <tr>
 		<td><a
@@ -66,3 +87,4 @@ echo $this->url('event', array(
              Bewertungen</a></td>      
  <?php endforeach; ?>
  </table>
+ <?php }}?>

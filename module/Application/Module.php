@@ -11,6 +11,7 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Validator\AbstractValidator;
 
 class Module
 {
@@ -26,7 +27,24 @@ class Module
         
         $viewModel->someVar = $myService->getStorage()->read();
         
+
+        date_default_timezone_set('Europe/Berlin');
         
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $translator = $serviceManager->get('translator');
+        
+        //$locale = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        $locale = 'de_DE';
+        //$locale = 'en_US';
+        
+        $translator->setLocale(\Locale::acceptFromHttp($locale));
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zendframework/resources/languages/de/Zend_Validate.php',
+            'default',
+            'de_DE'
+        );
+        AbstractValidator::setDefaultTranslator($translator);
     }
 
     public function getConfig()

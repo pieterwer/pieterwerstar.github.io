@@ -27,7 +27,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'name',
-                'maxlength' => 100,
+                'maxlength' => 50,
             )
         ));
         
@@ -39,7 +39,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'vorname',
-                'maxlength' => 100,
+                'maxlength' => 50,
             )
         ));
         
@@ -88,7 +88,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'iban',
-                'maxlength' => 100,
+                'maxlength' => 34,
             )
         ));
         
@@ -100,7 +100,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'bic',
-                'maxlength' => 100,
+                'maxlength' => 11,
             )
         ));
         
@@ -125,7 +125,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'firmenname',
-                'maxlength' => 100,
+                'maxlength' => 50,
             )
         ));
         
@@ -137,7 +137,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'strasse',
-                'maxlength' => 100,
+                'maxlength' => 50,
             )
         ));
         
@@ -149,7 +149,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'hausnummer',
-                'maxlength' => 100,
+                'maxlength' => 10,
             	'style' => 'width: 30px; margin-left: 5px;'
             )
         ));
@@ -162,7 +162,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'postleitzahl',
-                'maxlength' => 100,
+                'maxlength' => 5,
             	'style' => 'width: 80px;'
             )
         ));
@@ -175,7 +175,7 @@ class VeranstalterForm extends Form
             ),
             'attributes' => array(
                 'id' => 'ort',
-                'maxlength' => 100,
+                'maxlength' => 50,
             	'style' => 'margin-left: 5px;'
             )
         ));
