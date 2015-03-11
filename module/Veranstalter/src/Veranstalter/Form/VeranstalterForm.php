@@ -56,6 +56,18 @@ class VeranstalterForm extends Form
         ));
         
         $this->add(array(
+            'name' => 'email2',
+            'type' => 'email',
+            'options' => array(
+                'label' => '',
+            ),
+            'attributes' => array(
+                'id' => 'email',
+                'maxlength' => 100,
+            )
+        ));
+        
+        $this->add(array(
             'name' => 'passwort',
             'type' => 'password',
             'options' => array(

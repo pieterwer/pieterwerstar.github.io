@@ -100,6 +100,30 @@ class VeranstalterFilter extends InputFilter
         );
         
         $this->add(array(
+            'name' => 'email2',
+            'required' => true,
+            'validators' => array(
+                array(
+                    'name' => 'NotEmpty',
+                    'options' => array(
+                        'messages' => array(
+                            'isEmpty' => 'Bitte geben Sie Ihre Email-Adresse nochmal ein.',
+                        ),
+                    ),
+                ),
+                array(
+                    'name' => 'Identical',
+                    'options' => array(
+                        'token' => 'email',
+                        'messages' => array(
+                            'notSame' => 'Die beiden Email-Adressen müssen Übereinstimmen!'
+                        )
+                    )
+                )
+            )
+        ));
+        
+        $this->add(array(
             'name' => 'name',
             'required' => true,
             'validators' => array(
