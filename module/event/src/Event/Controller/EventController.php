@@ -303,6 +303,7 @@ class EventController extends AbstractActionController
 //         };
         return array(
             'form' => $form,
+            'event'=> $event,
             'request' => $request,
             'kategorien' => $request->getPost('kategorien'),
             'test' => $request->getPost('sportart'),
@@ -365,27 +366,34 @@ class EventController extends AbstractActionController
         
         $dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
         $form = new EventForm($dbAdapter);
+        
 //         $event->getKategorien;
 //         $event->setKategorien(NULL);
-        $form->bind($event);
-        $form->setData(array('Time' => date_format(date_create($event->getDatum()),'H:i'),
-        'Date' => date_format(date_create($event->getDatum()),'Y-m-d') ));
+        
+//         $form->setData(array('Time' => date_format(date_create($event->getDatum()),'H:i'),
+//         'Date' => date_format(date_create($event->getDatum()),'Y-m-d') ));
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setData($request->getPost());
-            $datum = $request->getPost('Date').' '.$request->getPost('Time');
+//             echo $request->getPost('datepicker');
+            $datum = $request->getPost('datepicker');
+//             $datum = date('Y-m-d',$time);
+//             echo $datum;
             if ($form->isValid()) {
                 $event->setDatum($datum);
                 $this->getEventsportartMapper()->saveEventzu($event->getId(), $request->getPost('sportart'));
                 $this->getEventkategorieMapper()->saveEventzu($event->getId(), $request->getPost('kategorien'));
                 $this->getEventMapper()->saveEvent($event);
-//                 echo"Šndern funktioniert";
+                echo"Šndern funktioniert";
                 return $this->redirect()->toRoute('veranstaltung', array(
                     'action' => 'show',
                     'id' => $event->getVeranstaltungsid()
                 ));
             }
+        }else{
+            $event->setDatum(date_format(date_create($event->getDatum()),'Y-m-d h:m') );
         }
+           $form->bind($event); 
         
         return array(
             'id' => $id,

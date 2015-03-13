@@ -21,9 +21,37 @@ echo $this->formRow($form->get('postleitzahl'));?><br/>Ort<?php
 echo $this->formRow($form->get('ort'));?><br/>Strasse<?php
 echo $this->formRow($form->get('strasse'));?><br/>Hausnummer<?php
 echo $this->formRow($form->get('hausnummer'));?><br/>Gebühr<?php
-echo $this->formRow($form->get('anmeldegebuehr'));?><br/>Datum<?php
-echo $this->formRow($form->get('Date'));?><br/>Zeit<?php
-echo $this->formRow($form->get('Time'));?><br/>Geschlecht<?php
+echo $this->formRow($form->get('anmeldegebuehr'));?><br/>
+
+<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen"
+     href="/css/bootstrap-datetimepicker.min.css">
+<div id="datetimepicker" class="input-append date">
+      <input type="text" name="datepicker" id="date" value="<?php if($event->getDatum())echo $event->getDatum(); ?>">
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+    </div>
+    <script type="text/javascript"
+     src="/js/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="/js/locales/bootstrap-datetimepicker.de.js">
+    </script>
+    <script type="text/javascript">
+      $('#datetimepicker').datetimepicker({
+        format: 'yyyy-MM-dd hh:mm',
+        language: 'de',
+        startDate: new Date(),
+        timePicker: false,
+      });
+    </script><br /><?php 
 echo $this->formRow($form->get('geschlechtsbeschraenkung'));?><br/>Meisterschaft<?php
 echo $this->formRow($form->get('meisterschaftsbeschraenkung'));?><br/>Beschreibung<?php
 echo $this->formRow($form->get('beschreibung'));?><br/>Sportart<?php

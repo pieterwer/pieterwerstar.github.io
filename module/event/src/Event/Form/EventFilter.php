@@ -46,7 +46,7 @@ class EventFilter extends InputFilter
         
         $this->add(array(
             'name' => 'Date',
-            'required' => true,
+            'required' => false,
             'validators' => array(
                 new \Zend\Validator\Callback(array(
                     'messages' => array(
@@ -67,6 +67,11 @@ class EventFilter extends InputFilter
                     }
                 ))
             )
+        ));
+        
+        $this->add(array(
+            'name' => 'Time',
+            'required' => false
         ));
         
         $this->add(array(
