@@ -279,10 +279,12 @@ class EventController extends AbstractActionController
         }
         if ($request->isPost()) {
             $form->setData($request->getPost());
-            $datum = $request->getPost('Date').' '.$request->getPost('Time');
-            
+            $datum = $request->getPost('datum');
+            echo 2;
             if ($form->isValid()) {
+                echo 2;
                 $event->setDatum($datum);
+print_r($event->getDatum());
                 $event->setStatus($veranstaltung->getStatus());
                 $this->getEventMapper()->saveEvent($event);
                 $this->getEventsportartMapper()->saveEventzu($event->getId(), $request->getPost('sportart'));
